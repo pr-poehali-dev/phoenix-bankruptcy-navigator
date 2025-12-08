@@ -6,6 +6,7 @@ import DiagnosticSection from "@/components/DiagnosticSection";
 import SpecialistsSection from "@/components/SpecialistsSection";
 import AcademySection from "@/components/AcademySection";
 import MediationSection from "@/components/MediationSection";
+import AIAssistant from "@/components/AIAssistant";
 
 const Index = () => {
   return (
@@ -150,6 +151,8 @@ const Index = () => {
           </div>
         </div>
       </footer>
+
+      <AIAssistant />
     </div>
   );
 };
