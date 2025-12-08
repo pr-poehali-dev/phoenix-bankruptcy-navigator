@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 const SpecialistLogin = () => {
   const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(true);
+  const [diplomaFile, setDiplomaFile] = useState<File | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -78,8 +79,39 @@ const SpecialistLogin = () => {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="license">Номер лицензии/аттестата</Label>
+                    <Label htmlFor="license">Номер лицензии/аттестата/аккредитации</Label>
                     <Input id="license" placeholder="№ 12345-ФУ от 15.03.2020" required />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="diploma">Диплом об образовании</Label>
+                    <div className="flex items-center gap-2">
+                      <Input 
+                        id="diploma" 
+                        type="file" 
+                        accept=".pdf,.jpg,.jpeg,.png"
+                        onChange={(e) => setDiplomaFile(e.target.files?.[0] || null)}
+                        required 
+                        className="cursor-pointer"
+                      />
+                      {diplomaFile && (
+                        <Badge variant="outline" className="bg-green-50 text-green-700 border-green-200">
+                          <Icon name="Check" size={12} className="mr-1" />
+                          {diplomaFile.name}
+                        </Badge>
+                      )}
+                    </div>
+                    <p className="text-xs text-muted-foreground">
+                      Форматы: PDF, JPG, JPEG, PNG (до 10 МБ)
+                    </p>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="sro">Членство в СРО</Label>
+                    <Input id="sro" placeholder="Название СРО и номер свидетельства" />
+                    <p className="text-xs text-muted-foreground">
+                      Необязательно. Укажите, если состоите в саморегулируемой организации
+                    </p>
                   </div>
 
                   <div className="space-y-2">
