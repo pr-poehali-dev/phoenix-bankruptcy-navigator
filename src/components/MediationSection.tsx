@@ -58,11 +58,11 @@ const MediationSection = () => {
           <Card className="shadow-md border-primary/20">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Icon name="Users" size={24} />
-                Семейные споры
+                <Icon name="Handshake" size={24} />
+                Предбанкротные переговоры
               </CardTitle>
               <CardDescription>
-                Раздел имущества, порядок общения с детьми, алименты
+                Урегулирование долгов с кредиторами до подачи в суд
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -70,26 +70,26 @@ const MediationSection = () => {
                 <Icon name="ShieldCheck" className="text-accent mt-1" size={20} />
                 <div>
                   <p className="font-medium">Конфиденциальность</p>
-                  <p className="text-sm text-muted-foreground">Полная анонимность и безопасность</p>
+                  <p className="text-sm text-muted-foreground">Переговоры без публичной огласки</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <Icon name="MessageSquare" className="text-primary mt-1" size={20} />
                 <div>
-                  <p className="font-medium">Совместная работа</p>
-                  <p className="text-sm text-muted-foreground">Общая доска, чат, документы</p>
+                  <p className="font-medium">Структурированный процесс</p>
+                  <p className="text-sm text-muted-foreground">План реструктуризации, мировое соглашение</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <Icon name="Clock" className="text-accent mt-1" size={20} />
                 <div>
-                  <p className="font-medium">Быстрое решение</p>
-                  <p className="text-sm text-muted-foreground">В среднем 2-4 недели vs 6-12 месяцев суда</p>
+                  <p className="font-medium">Экономия времени и денег</p>
+                  <p className="text-sm text-muted-foreground">Быстрее и дешевле судебного банкротства</p>
                 </div>
               </div>
               <Button className="w-full mt-4 hover:scale-105 transition-transform bg-gradient-to-r from-primary to-primary hover:from-primary hover:to-accent shadow-md shimmer gold-glow">
-                <Icon name="Handshake" size={16} className="mr-2" />
-                Начать медиацию
+                <Icon name="Users" size={16} className="mr-2" />
+                Начать переговоры
               </Button>
             </CardContent>
           </Card>
