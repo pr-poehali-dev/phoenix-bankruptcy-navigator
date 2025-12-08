@@ -74,6 +74,15 @@ const Index = () => {
               <Button 
                 variant="outline" 
                 size="sm" 
+                onClick={() => document.getElementById('shop')?.scrollIntoView({ behavior: 'smooth' })}
+                className="hidden lg:flex gap-2"
+              >
+                <Icon name="ShoppingBag" size={16} />
+                Наш магазин
+              </Button>
+              <Button 
+                variant="outline" 
+                size="sm" 
                 onClick={() => navigate('/cart')}
                 className="relative"
               >
