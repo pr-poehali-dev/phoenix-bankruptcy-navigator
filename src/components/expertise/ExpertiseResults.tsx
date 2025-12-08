@@ -2,6 +2,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Icon from "@/components/ui/icon";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 type ExpertiseType = 
   | "financial" 
@@ -40,6 +42,20 @@ const ExpertiseResults = ({
   onToggleExpert, 
   onReset 
 }: ExpertiseResultsProps) => {
+  const navigate = useNavigate();
+  const [isSaving, setIsSaving] = useState(false);
+
+  const saveToAccount = () => {
+    setIsSaving(true);
+    const selectedExpertsData = experts.filter(e => selectedExperts.includes(e.id));
+    localStorage.setItem('selectedExperts', JSON.stringify(selectedExpertsData));
+    localStorage.setItem('expertiseType', expertiseType || '');
+    setTimeout(() => {
+      setIsSaving(false);
+      navigate('/client-dashboard?tab=specialists');
+    }, 500);
+  };
+
   const getExpertiseTypeName = () => {
     switch (expertiseType) {
       case "financial": return "Финансовая экспертиза";
@@ -147,8 +163,12 @@ const ExpertiseResults = ({
               <CardTitle>Выбрано экспертов: {selectedExperts.length}</CardTitle>
               <CardDescription>Отправить запрос на проведение экспертизы</CardDescription>
             </CardHeader>
-            <CardContent>
-              <Button className="w-full" size="lg">
+            <CardContent className="space-y-3">
+              <Button className="w-full" size="lg" onClick={saveToAccount} disabled={isSaving}>
+                <Icon name={isSaving ? "Loader2" : "Save"} size={16} className={`mr-2 ${isSaving ? 'animate-spin' : ''}`} />
+                {isSaving ? 'Сохранение...' : 'Сохранить в личный кабинет'}
+              </Button>
+              <Button variant="outline" className="w-full" size="lg">
                 <Icon name="Send" size={16} className="mr-2" />
                 Отправить запрос выбранным экспертам
               </Button>

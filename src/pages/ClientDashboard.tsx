@@ -1,20 +1,70 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Icon from "@/components/ui/icon";
 import PhoenixLogo from "@/components/PhoenixLogo";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
+
+interface SavedExpert {
+  id: number;
+  name: string;
+  specialization: string;
+  experience: number;
+  cases: number;
+  rating: number;
+  price: string;
+  certifications: string[];
+  available: boolean;
+  avatar: string;
+  avatarBg: string;
+}
 
 const ClientDashboard = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [user] = useState({
     name: "Иван Петров",
     email: "ivan@example.com",
     phone: "+7 (999) 123-45-67",
     registeredAt: "15 ноября 2024"
   });
+  const [savedExperts, setSavedExperts] = useState<SavedExpert[]>([]);
+  const [expertiseType, setExpertiseType] = useState<string>("");
+  const [activeTab, setActiveTab] = useState("overview");
+
+  useEffect(() => {
+    const experts = localStorage.getItem('selectedExperts');
+    const type = localStorage.getItem('expertiseType');
+    if (experts) {
+      setSavedExperts(JSON.parse(experts));
+    }
+    if (type) {
+      setExpertiseType(type);
+    }
+    const tab = searchParams.get('tab');
+    if (tab) {
+      setActiveTab(tab);
+    }
+  }, [searchParams]);
+
+  const getExpertiseTypeName = () => {
+    switch (expertiseType) {
+      case "financial": return "Финансовая экспертиза";
+      case "accounting": return "Бухгалтерская экспертиза";
+      case "property": return "Оценка имущества";
+      case "business": return "Оценка бизнеса";
+      case "technical": return "Техническая экспертиза";
+      default: return "";
+    }
+  };
+
+  const removeExpert = (expertId: number) => {
+    const updated = savedExperts.filter(e => e.id !== expertId);
+    setSavedExperts(updated);
+    localStorage.setItem('selectedExperts', JSON.stringify(updated));
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -48,7 +98,7 @@ const ClientDashboard = () => {
           <p className="text-muted-foreground">Управляйте своими делами и отслеживайте прогресс</p>
         </div>
 
-        <Tabs defaultValue="overview" className="space-y-6">
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
           <TabsList className="grid w-full grid-cols-4 lg:w-auto lg:inline-grid">
             <TabsTrigger value="overview" className="gap-2">
               <Icon name="LayoutDashboard" size={16} />
@@ -61,6 +111,11 @@ const ClientDashboard = () => {
             <TabsTrigger value="specialists" className="gap-2">
               <Icon name="Users" size={16} />
               <span className="hidden sm:inline">Специалисты</span>
+              {savedExperts.length > 0 && (
+                <Badge className="ml-1 h-5 w-5 rounded-full p-0 flex items-center justify-center text-xs">
+                  {savedExperts.length}
+                </Badge>
+              )}
             </TabsTrigger>
             <TabsTrigger value="profile" className="gap-2">
               <Icon name="User" size={16} />
@@ -224,6 +279,70 @@ const ClientDashboard = () => {
           </TabsContent>
 
           <TabsContent value="specialists" className="space-y-6">
+            {savedExperts.length > 0 && (
+              <Card className="border-primary/30">
+                <CardHeader>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <CardTitle>Выбранные эксперты</CardTitle>
+                      <CardDescription>
+                        Эксперты по направлению: {getExpertiseTypeName()}
+                      </CardDescription>
+                    </div>
+                    <Badge variant="outline" className="text-base">
+                      {savedExperts.length} {savedExperts.length === 1 ? 'эксперт' : 'экспертов'}
+                    </Badge>
+                  </div>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  {savedExperts.map((expert) => (
+                    <div key={expert.id} className="flex items-center justify-between p-4 border rounded-lg hover:bg-accent/5 transition-colors">
+                      <div className="flex items-center gap-4">
+                        <div className={`w-14 h-14 ${expert.avatarBg} rounded-full flex items-center justify-center text-white font-bold text-lg flex-shrink-0`}>
+                          {expert.avatar}
+                        </div>
+                        <div>
+                          <p className="font-medium">{expert.name}</p>
+                          <p className="text-sm text-muted-foreground">{expert.specialization}</p>
+                          <div className="flex items-center gap-3 mt-1">
+                            <div className="flex items-center gap-1">
+                              <Icon name="Star" className="text-yellow-500" size={14} />
+                              <span className="text-sm font-medium">{expert.rating}</span>
+                            </div>
+                            <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                              <Icon name="Briefcase" size={14} />
+                              <span>{expert.cases} дел</span>
+                            </div>
+                            <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                              <Icon name="Award" size={14} />
+                              <span>{expert.experience} лет</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="text-right mr-2">
+                          <p className="text-sm text-muted-foreground">Стоимость</p>
+                          <p className="font-bold text-primary">{expert.price}</p>
+                        </div>
+                        <Button variant="outline" size="sm" disabled={!expert.available}>
+                          <Icon name="MessageSquare" size={16} className="mr-2" />
+                          Написать
+                        </Button>
+                        <Button variant="ghost" size="sm" onClick={() => removeExpert(expert.id)}>
+                          <Icon name="X" size={16} />
+                        </Button>
+                      </div>
+                    </div>
+                  ))}
+                  <Button className="w-full mt-4" size="lg">
+                    <Icon name="Send" size={16} className="mr-2" />
+                    Отправить запрос всем экспертам
+                  </Button>
+                </CardContent>
+              </Card>
+            )}
+
             <Card>
               <CardHeader>
                 <CardTitle>Мои специалисты</CardTitle>
