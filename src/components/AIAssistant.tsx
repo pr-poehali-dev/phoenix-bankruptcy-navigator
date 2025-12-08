@@ -34,37 +34,7 @@ const AIAssistant = () => {
     "Как выбрать специалиста?"
   ];
 
-  const getAIResponse = (userQuestion: string): string => {
-    const lowerQuestion = userQuestion.toLowerCase();
-    
-    if (lowerQuestion.includes("когда") || lowerQuestion.includes("подать") || lowerQuestion.includes("подавать")) {
-      return "Вы можете подать на банкротство при задолженности от 500 тысяч рублей и просрочке более 3 месяцев. Также есть обязанность подать заявление, если долги превышают стоимость вашего имущества и вы не можете их погасить. Рекомендую воспользоваться нашим калькулятором для оценки вашей ситуации.";
-    }
-    
-    if (lowerQuestion.includes("стоимость") || lowerQuestion.includes("стоит") || lowerQuestion.includes("цена")) {
-      return "Минимальная стоимость процедуры банкротства составляет около 55-80 тысяч рублей: госпошлина (300₽), вознаграждение финансового управляющего (от 25 000₽), услуги юриста (от 30 000₽), публикации (около 5 000₽). Точная сумма зависит от сложности вашего дела.";
-    }
-    
-    if (lowerQuestion.includes("имущество") || lowerQuestion.includes("квартира") || lowerQuestion.includes("жилье")) {
-      return "При банкротстве сохраняется: единственное жильё (если не в ипотеке), личные вещи, предметы профессиональной деятельности, продукты питания, призы и награды. Может быть реализовано: дополнительная недвижимость, автомобили (кроме необходимых для инвалидов), ценные бумаги, предметы роскоши. Наличные средства до 100 МРОТ сохраняются.";
-    }
-    
-    if (lowerQuestion.includes("специалист") || lowerQuestion.includes("юрист") || lowerQuestion.includes("управляющ")) {
-      return "При выборе специалиста обратите внимание на: опыт работы (желательно от 3 лет), количество успешно завершённых дел, специализацию (ипотека, МФО, ИП), членство в СРО, отзывы клиентов. В нашей базе все специалисты проверены и имеют подтверждённую статистику. Могу помочь подобрать эксперта под ваш случай!";
-    }
-    
-    if (lowerQuestion.includes("срок") || lowerQuestion.includes("длит") || lowerQuestion.includes("сколько времени")) {
-      return "Процедура банкротства обычно занимает от 6 до 12 месяцев. Основные этапы: подготовка документов (1-2 недели), рассмотрение заявления судом (2-3 месяца), реализация имущества (3-6 месяцев), завершение процедуры (1 месяц). Внесудебное банкротство может пройти быстрее — за 6 месяцев.";
-    }
-
-    if (lowerQuestion.includes("кредит") || lowerQuestion.includes("долг") || lowerQuestion.includes("займ")) {
-      return "Через банкротство можно списать: кредиты банков, займы МФО, долги по кредитным картам, долги перед физлицами, задолженности по ЖКХ. НЕ списываются: алименты, возмещение вреда жизни и здоровью, зарплаты сотрудников, текущие платежи.";
-    }
-
-    return "Отличный вопрос! Для более точного ответа рекомендую воспользоваться нашим умным калькулятором или записаться на консультацию к специалисту. В разделе 'Академия' вы найдёте подробные материалы по всем аспектам банкротства.";
-  };
-
-  const handleSendMessage = () => {
+  const handleSendMessage = async () => {
     if (!inputValue.trim()) return;
 
     const userMessage: Message = {
@@ -75,19 +45,50 @@ const AIAssistant = () => {
     };
 
     setMessages(prev => [...prev, userMessage]);
+    const currentInput = inputValue;
     setInputValue("");
     setIsTyping(true);
 
-    setTimeout(() => {
+    try {
+      const response = await fetch('https://functions.poehali.dev/6e2ace78-fd50-4321-ad50-633d032cd731', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: currentInput,
+          history: messages.map(m => ({
+            role: m.role,
+            content: m.content
+          }))
+        })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to get AI response');
+      }
+
       const aiResponse: Message = {
         id: (Date.now() + 1).toString(),
         role: "assistant",
-        content: getAIResponse(inputValue),
+        content: data.message,
         timestamp: new Date()
       };
       setMessages(prev => [...prev, aiResponse]);
+    } catch (error) {
+      const errorMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        role: "assistant",
+        content: "Извините, произошла ошибка при обработке запроса. Попробуйте ещё раз или обратитесь к специалистам платформы.",
+        timestamp: new Date()
+      };
+      setMessages(prev => [...prev, errorMessage]);
+      console.error('AI Chat error:', error);
+    } finally {
       setIsTyping(false);
-    }, 1000);
+    }
   };
 
   const handleQuickQuestion = (question: string) => {
