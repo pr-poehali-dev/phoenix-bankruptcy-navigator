@@ -204,7 +204,8 @@ const SpecialistsSection = () => {
                 </Button>
               </CardContent>
             </Card>
-          ))}\n          </div>
+          ))}
+          </div>
         </ScrollReveal>
 
         <ScrollReveal delay={400}>
