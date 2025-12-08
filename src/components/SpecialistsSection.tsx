@@ -88,7 +88,7 @@ const SpecialistsSection = () => {
         </ScrollReveal>
 
         <ScrollReveal delay={400}>
-          <Card className="mt-12 bg-gradient-to-r from-primary/5 to-accent/5 border-accent/30 shadow-md">
+          <Card className="mt-12 bg-gradient-to-r from-primary/5 to-accent/5 border-accent/30 shadow-md premium-border">
           <CardHeader>
             <div className="flex items-center gap-3">
               <Icon name="Shield" className="text-primary" size={32} />

@@ -97,7 +97,7 @@ const MediationSection = () => {
         </ScrollReveal>
 
         <ScrollReveal delay={400}>
-          <Card className="mt-8 bg-card shadow-md border-primary/20">
+          <Card className="mt-8 bg-card shadow-md border-primary/20 premium-border">
           <CardHeader>
             <CardTitle className="text-center">Преимущества медиации</CardTitle>
           </CardHeader>

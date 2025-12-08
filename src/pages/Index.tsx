@@ -14,6 +14,14 @@ const Index = () => {
     <div className="min-h-screen bg-background relative">
       <div className="parallax-bg">
         <div className="parallax-pattern" />
+        <div className="gold-particles">
+          <div className="gold-particle"></div>
+          <div className="gold-particle"></div>
+          <div className="gold-particle"></div>
+          <div className="gold-particle"></div>
+          <div className="gold-particle"></div>
+          <div className="gold-particle"></div>
+        </div>
       </div>
       <header className="border-b bg-card/95 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
         <div className="container mx-auto px-4 py-4">
@@ -77,7 +85,7 @@ const Index = () => {
               </CardHeader>
             </Card>
 
-            <Card className="hover-scale border-accent/30 shadow-sm hover:shadow-lg hover:shadow-accent/20 transition-all cursor-pointer group shimmer-slow">
+            <Card className="hover-scale border-accent/30 shadow-sm hover:shadow-lg hover:shadow-accent/20 transition-all cursor-pointer group shimmer-slow premium-border">
               <CardHeader>
                 <div className="w-12 h-12 bg-accent/15 rounded-xl flex items-center justify-center mb-4 group-hover:bg-accent/30 transition-colors shadow-sm">
                   <Icon name="Users" className="text-accent group-hover:scale-110 transition-transform" size={24} />
