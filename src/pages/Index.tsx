@@ -14,14 +14,14 @@ const Index = () => {
     <div className="min-h-screen bg-background relative">
       <div className="parallax-bg">
         <div className="parallax-pattern" />
-        <div className="gold-particles">
-          <div className="gold-particle"></div>
-          <div className="gold-particle"></div>
-          <div className="gold-particle"></div>
-          <div className="gold-particle"></div>
-          <div className="gold-particle"></div>
-          <div className="gold-particle"></div>
-        </div>
+      </div>
+      <div className="gold-particles">
+        <div className="gold-particle"></div>
+        <div className="gold-particle"></div>
+        <div className="gold-particle"></div>
+        <div className="gold-particle"></div>
+        <div className="gold-particle"></div>
+        <div className="gold-particle"></div>
       </div>
       <header className="border-b bg-card/95 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
         <div className="container mx-auto px-4 py-4">

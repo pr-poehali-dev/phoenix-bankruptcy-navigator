@@ -339,7 +339,7 @@
     height: 100vh;
     overflow: hidden;
     pointer-events: none;
-    z-index: 10;
+    z-index: 40;
   }
 
   .gold-particle {
