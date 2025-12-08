@@ -6,6 +6,7 @@ import DiagnosticSection from "@/components/DiagnosticSection";
 import SpecialistsSection from "@/components/SpecialistsSection";
 import AcademySection from "@/components/AcademySection";
 import MediationSection from "@/components/MediationSection";
+import ExpertiseSection from "@/components/ExpertiseSection";
 import AIAssistant from "@/components/AIAssistant";
 import ScrollReveal from "@/components/ScrollReveal";
 import PhoenixLogo from "@/components/PhoenixLogo";
@@ -29,6 +30,7 @@ const Index = () => {
             <nav className="hidden md:flex gap-6">
               <a href="#diagnostic" className="text-sm hover:text-primary transition-all relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Диагностика</a>
               <a href="#specialists" className="text-sm hover:text-primary transition-all relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Специалисты</a>
+              <a href="#expertise" className="text-sm hover:text-primary transition-all relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Экспертиза</a>
               <a href="#academy" className="text-sm hover:text-primary transition-all relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Академия</a>
               <a href="#mediation" className="text-sm hover:text-primary transition-all relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Медиация</a>
             </nav>
@@ -111,6 +113,7 @@ const Index = () => {
 
       <DiagnosticSection />
       <SpecialistsSection />
+      <ExpertiseSection />
       <AcademySection />
       <MediationSection />
 
@@ -133,6 +136,7 @@ const Index = () => {
               <ul className="space-y-2 text-sm text-white/70">
                 <li><a href="#diagnostic" className="hover:text-accent transition">Диагностика</a></li>
                 <li><a href="#specialists" className="hover:text-accent transition">Специалисты</a></li>
+                <li><a href="#expertise" className="hover:text-accent transition">Экспертиза</a></li>
                 <li><a href="#academy" className="hover:text-accent transition">Академия</a></li>
                 <li><a href="#mediation" className="hover:text-accent transition">Медиация</a></li>
               </ul>
