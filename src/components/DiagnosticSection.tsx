@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Progress } from "@/components/ui/progress";
 import Icon from "@/components/ui/icon";
 import DiagnosticTypeSelector from "@/components/diagnostic/DiagnosticTypeSelector";
 import IndividualQuestions from "@/components/diagnostic/IndividualQuestions";
@@ -198,12 +199,15 @@ const DiagnosticSection = () => {
     return <DiagnosticResultComponent result={result} onReset={resetDiagnostic} />;
   }
 
+  const totalLevels = 4;
+  const progressPercentage = (currentLevel / totalLevels) * 100;
+
   return (
     <section id="diagnostic" className="py-20 px-4 bg-card relative">
       <div className="container mx-auto max-w-4xl">
         <Card className="shadow-lg">
           <CardHeader>
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between mb-4">
               <div>
                 <CardTitle className="text-2xl mb-2">
                   {clientType === "individual" ? "Диагностика для физических лиц" : "Диагностика для юридических лиц / ИП"}
@@ -215,6 +219,14 @@ const DiagnosticSection = () => {
               <Button variant="ghost" size="sm" onClick={resetDiagnostic}>
                 <Icon name="X" size={20} />
               </Button>
+            </div>
+            
+            <div className="space-y-2">
+              <div className="flex justify-between text-sm">
+                <span className="text-muted-foreground">Прогресс диагностики</span>
+                <span className="font-medium">{currentLevel} из {totalLevels}</span>
+              </div>
+              <Progress value={progressPercentage} className="h-2" />
             </div>
           </CardHeader>
           <CardContent>

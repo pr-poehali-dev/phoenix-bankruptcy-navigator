@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Icon from "@/components/ui/icon";
+import { jsPDF } from "jspdf";
 
 interface DiagnosticResult {
   prospects: string;
@@ -17,6 +18,104 @@ interface DiagnosticResultProps {
 }
 
 const DiagnosticResultComponent = ({ result, onReset }: DiagnosticResultProps) => {
+  const exportToPDF = () => {
+    const doc = new jsPDF();
+    const pageWidth = doc.internal.pageSize.getWidth();
+    let yPosition = 20;
+
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(18);
+    doc.text("Результаты диагностики банкротства", pageWidth / 2, yPosition, { align: "center" });
+    
+    yPosition += 15;
+    doc.setFontSize(14);
+    doc.text(`Перспективы: ${result.prospects}`, 20, yPosition);
+    
+    yPosition += 15;
+    doc.setFontSize(12);
+    doc.setFont("helvetica", "bold");
+    doc.text("Ключевые риски:", 20, yPosition);
+    yPosition += 8;
+    
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(10);
+    result.risks.forEach((risk) => {
+      const lines = doc.splitTextToSize(risk, pageWidth - 40);
+      lines.forEach((line: string) => {
+        if (yPosition > 280) {
+          doc.addPage();
+          yPosition = 20;
+        }
+        doc.text(`• ${line}`, 25, yPosition);
+        yPosition += 6;
+      });
+    });
+
+    if (result.alternatives.length > 0) {
+      yPosition += 5;
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(12);
+      doc.text("Альтернативные варианты:", 20, yPosition);
+      yPosition += 8;
+      
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(10);
+      result.alternatives.forEach((alt) => {
+        const lines = doc.splitTextToSize(alt, pageWidth - 40);
+        lines.forEach((line: string) => {
+          if (yPosition > 280) {
+            doc.addPage();
+            yPosition = 20;
+          }
+          doc.text(`• ${line}`, 25, yPosition);
+          yPosition += 6;
+        });
+      });
+    }
+
+    yPosition += 5;
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(12);
+    doc.text("Рекомендуемая стратегия:", 20, yPosition);
+    yPosition += 8;
+    
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(10);
+    const strategyLines = doc.splitTextToSize(result.strategy, pageWidth - 40);
+    strategyLines.forEach((line: string) => {
+      if (yPosition > 280) {
+        doc.addPage();
+        yPosition = 20;
+      }
+      doc.text(line, 20, yPosition);
+      yPosition += 6;
+    });
+
+    yPosition += 5;
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(12);
+    doc.text("Следующие шаги:", 20, yPosition);
+    yPosition += 8;
+    
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(10);
+    const nextStepsLines = doc.splitTextToSize(result.nextSteps, pageWidth - 40);
+    nextStepsLines.forEach((line: string) => {
+      if (yPosition > 280) {
+        doc.addPage();
+        yPosition = 20;
+      }
+      doc.text(line, 20, yPosition);
+      yPosition += 6;
+    });
+
+    yPosition += 10;
+    doc.setFontSize(8);
+    doc.setFont("helvetica", "italic");
+    doc.text("Документ создан на платформе Феникс - Навигатор банкротства", pageWidth / 2, yPosition, { align: "center" });
+
+    doc.save("diagnostika-bankrotstva.pdf");
+  };
   return (
     <section id="diagnostic" className="py-20 px-4 bg-card relative">
       <div className="container mx-auto max-w-4xl">
@@ -93,6 +192,10 @@ const DiagnosticResultComponent = ({ result, onReset }: DiagnosticResultProps) =
               <Button onClick={onReset} variant="outline" className="flex-1">
                 <Icon name="RotateCcw" size={16} className="mr-2" />
                 Пройти заново
+              </Button>
+              <Button onClick={exportToPDF} variant="outline" className="flex-1">
+                <Icon name="Download" size={16} className="mr-2" />
+                Скачать PDF
               </Button>
               <Button className="flex-1" onClick={() => document.getElementById('specialists')?.scrollIntoView({ behavior: 'smooth' })}>
                 <Icon name="Users" size={16} className="mr-2" />
