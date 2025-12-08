@@ -80,10 +80,11 @@ const ComparisonSection = () => {
         </ScrollReveal>
 
         <ScrollReveal delay={100}>
-          <div className="grid md:grid-cols-2 gap-6 mb-12">
+          <div className="grid md:grid-cols-3 gap-4 mb-6">
+            <div></div>
             <Card className="shadow-md border-red-200 bg-red-50/50">
               <CardHeader className="pb-4">
-                <CardTitle className="flex items-center gap-2 text-red-700">
+                <CardTitle className="flex items-center gap-2 text-red-700 justify-center">
                   <div className="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center">
                     <Icon name="X" size={20} className="text-white" />
                   </div>
@@ -94,7 +95,7 @@ const ComparisonSection = () => {
 
             <Card className="shadow-md border-green-200 bg-green-50/50">
               <CardHeader className="pb-4">
-                <CardTitle className="flex items-center gap-2 text-green-700">
+                <CardTitle className="flex items-center gap-2 text-green-700 justify-center">
                   <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
                     <Icon name="Check" size={20} className="text-white" />
                   </div>
@@ -108,15 +109,15 @@ const ComparisonSection = () => {
         <div className="space-y-4">
           {comparisons.map((item, index) => (
             <ScrollReveal key={index} delay={index * 50}>
-              <div className="grid md:grid-cols-3 gap-4 items-center">
-                <div className="md:col-span-1">
-                  <div className="bg-primary/10 rounded-lg p-3 text-center">
+              <div className="grid md:grid-cols-3 gap-4 items-stretch">
+                <div className="flex items-center">
+                  <div className="bg-primary/10 rounded-lg p-3 text-center w-full">
                     <p className="font-semibold text-sm">{item.aspect}</p>
                   </div>
                 </div>
 
-                <Card className="shadow-sm border-red-200 bg-red-50/30">
-                  <CardContent className="p-4">
+                <Card className="shadow-sm border-red-200 bg-red-50/30 flex flex-col">
+                  <CardContent className="p-4 flex-1 flex items-center">
                     <div className="flex items-start gap-2">
                       <Icon name={item.withoutIcon} size={18} className="text-red-500 flex-shrink-0 mt-0.5" />
                       <p className="text-sm text-muted-foreground">{item.without}</p>
@@ -124,8 +125,8 @@ const ComparisonSection = () => {
                   </CardContent>
                 </Card>
 
-                <Card className="shadow-sm border-green-200 bg-green-50/30">
-                  <CardContent className="p-4">
+                <Card className="shadow-sm border-green-200 bg-green-50/30 flex flex-col">
+                  <CardContent className="p-4 flex-1 flex items-center">
                     <div className="flex items-start gap-2">
                       <Icon name={item.withIcon} size={18} className="text-green-500 flex-shrink-0 mt-0.5" />
                       <p className="text-sm font-medium">{item.with}</p>
