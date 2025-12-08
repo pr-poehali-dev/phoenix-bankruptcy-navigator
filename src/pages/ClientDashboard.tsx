@@ -6,6 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Icon from "@/components/ui/icon";
 import PhoenixLogo from "@/components/PhoenixLogo";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { toast } from "@/hooks/use-toast";
 
 interface SavedExpert {
   id: number;
@@ -61,9 +62,24 @@ const ClientDashboard = () => {
   };
 
   const removeExpert = (expertId: number) => {
+    const expertToRemove = savedExperts.find(e => e.id === expertId);
     const updated = savedExperts.filter(e => e.id !== expertId);
     setSavedExperts(updated);
     localStorage.setItem('selectedExperts', JSON.stringify(updated));
+    
+    toast({
+      title: "Эксперт удалён",
+      description: `${expertToRemove?.name} удалён из списка`,
+      duration: 2000,
+    });
+  };
+
+  const sendRequestToExperts = () => {
+    toast({
+      title: "Запрос отправлен!",
+      description: `Запрос отправлен ${savedExperts.length} ${savedExperts.length === 1 ? 'эксперту' : 'экспертам'}. Ожидайте ответа.`,
+      duration: 4000,
+    });
   };
 
   return (
@@ -335,7 +351,7 @@ const ClientDashboard = () => {
                       </div>
                     </div>
                   ))}
-                  <Button className="w-full mt-4" size="lg">
+                  <Button className="w-full mt-4" size="lg" onClick={sendRequestToExperts}>
                     <Icon name="Send" size={16} className="mr-2" />
                     Отправить запрос всем экспертам
                   </Button>

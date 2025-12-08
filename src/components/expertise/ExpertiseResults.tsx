@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import Icon from "@/components/ui/icon";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { toast } from "@/hooks/use-toast";
 
 type ExpertiseType = 
   | "financial" 
@@ -50,6 +51,13 @@ const ExpertiseResults = ({
     const selectedExpertsData = experts.filter(e => selectedExperts.includes(e.id));
     localStorage.setItem('selectedExperts', JSON.stringify(selectedExpertsData));
     localStorage.setItem('expertiseType', expertiseType || '');
+    
+    toast({
+      title: "Эксперты сохранены!",
+      description: `${selectedExpertsData.length} ${selectedExpertsData.length === 1 ? 'эксперт сохранён' : 'экспертов сохранено'} в личный кабинет`,
+      duration: 3000,
+    });
+    
     setTimeout(() => {
       setIsSaving(false);
       navigate('/client-dashboard?tab=specialists');
