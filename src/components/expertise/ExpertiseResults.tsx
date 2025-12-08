@@ -21,6 +21,8 @@ interface Expert {
   price: string;
   certifications: string[];
   available: boolean;
+  avatar: string;
+  avatarBg: string;
 }
 
 interface ExpertiseResultsProps {
@@ -69,8 +71,8 @@ const ExpertiseResults = ({
               <CardHeader>
                 <div className="flex items-start justify-between">
                   <div className="flex items-start gap-4">
-                    <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Icon name="User" className="text-primary" size={32} />
+                    <div className={`w-16 h-16 ${expert.avatarBg} rounded-full flex items-center justify-center flex-shrink-0 text-white font-bold text-xl`}>
+                      {expert.avatar}
                     </div>
                     <div>
                       <CardTitle className="mb-1">{expert.name}</CardTitle>

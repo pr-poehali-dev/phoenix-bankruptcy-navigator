@@ -21,6 +21,8 @@ interface Expert {
   price: string;
   certifications: string[];
   available: boolean;
+  avatar: string;
+  avatarBg: string;
 }
 
 const experts: Expert[] = [
@@ -33,7 +35,9 @@ const experts: Expert[] = [
     rating: 4.9,
     price: "от 50 000 ₽",
     certifications: ["Аттестат эксперта-бухгалтера", "Член СРО"],
-    available: true
+    available: true,
+    avatar: "ПИ",
+    avatarBg: "bg-blue-500"
   },
   {
     id: 2,
@@ -44,7 +48,9 @@ const experts: Expert[] = [
     rating: 5.0,
     price: "от 45 000 ₽",
     certifications: ["Эксперт ТПП РФ", "Аудитор"],
-    available: true
+    available: true,
+    avatar: "СЕ",
+    avatarBg: "bg-purple-500"
   },
   {
     id: 3,
@@ -55,7 +61,9 @@ const experts: Expert[] = [
     rating: 4.8,
     price: "от 35 000 ₽",
     certifications: ["Оценщик 1 категории", "Член СРО"],
-    available: false
+    available: false,
+    avatar: "КД",
+    avatarBg: "bg-green-500"
   },
   {
     id: 4,
@@ -66,7 +74,9 @@ const experts: Expert[] = [
     rating: 4.9,
     price: "от 60 000 ₽",
     certifications: ["Оценщик высшей категории", "MBA"],
-    available: true
+    available: true,
+    avatar: "ВО",
+    avatarBg: "bg-pink-500"
   },
   {
     id: 5,
@@ -77,7 +87,9 @@ const experts: Expert[] = [
     rating: 4.7,
     price: "от 40 000 ₽",
     certifications: ["Инженер-эксперт", "Член СРО"],
-    available: true
+    available: true,
+    avatar: "МА",
+    avatarBg: "bg-orange-500"
   }
 ];
 
