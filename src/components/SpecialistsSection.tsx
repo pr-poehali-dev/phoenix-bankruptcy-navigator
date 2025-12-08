@@ -20,7 +20,9 @@ const SpecialistsSection = () => {
       cases: 127,
       success: 94,
       specialization: "Ипотека и крупные займы",
-      experience: "8 лет"
+      experience: "8 лет",
+      avatar: "АП",
+      avatarBg: "bg-blue-500"
     },
     {
       name: "Сергей Иванов",
@@ -29,7 +31,9 @@ const SpecialistsSection = () => {
       cases: 98,
       success: 91,
       specialization: "МФО и кредитные карты",
-      experience: "6 лет"
+      experience: "6 лет",
+      avatar: "СИ",
+      avatarBg: "bg-purple-500"
     },
     {
       name: "Мария Козлова",
@@ -38,7 +42,9 @@ const SpecialistsSection = () => {
       cases: 143,
       success: 89,
       specialization: "Банкротство ИП",
-      experience: "10 лет"
+      experience: "10 лет",
+      avatar: "МК",
+      avatarBg: "bg-green-500"
     }
   ];
 
@@ -168,8 +174,8 @@ const SpecialistsSection = () => {
             <Card key={index} className="hover-scale shadow-sm hover:shadow-md transition-shadow border-primary/20">
               <CardHeader>
                 <div className="flex items-start justify-between mb-4">
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-md shimmer-slow gold-glow">
-                    {specialist.name.charAt(0)}
+                  <div className={`w-16 h-16 ${specialist.avatarBg} rounded-full flex items-center justify-center text-white text-xl font-bold shadow-md`}>
+                    {specialist.avatar}
                   </div>
                   <div className="flex items-center gap-1">
                     <Icon name="Star" size={16} className="text-accent fill-accent" />
