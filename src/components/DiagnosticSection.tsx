@@ -224,9 +224,15 @@ const DiagnosticSection = () => {
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
                 <span className="text-muted-foreground">Прогресс диагностики</span>
-                <span className="font-medium">{currentLevel} из {totalLevels}</span>
+                <span className="font-medium transition-all duration-300">{currentLevel} из {totalLevels}</span>
               </div>
-              <Progress value={progressPercentage} className="h-2" />
+              <div className="progress-pulse">
+                <Progress value={progressPercentage} className="h-2 shadow-sm" />
+              </div>
+              <div className="flex justify-between text-xs text-muted-foreground">
+                <span>Начало</span>
+                <span>Завершение</span>
+              </div>
             </div>
           </CardHeader>
           <CardContent>
