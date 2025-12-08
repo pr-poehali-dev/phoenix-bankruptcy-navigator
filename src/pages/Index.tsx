@@ -9,6 +9,13 @@ import MediationSection from "@/components/MediationSection";
 import ExpertiseSection from "@/components/ExpertiseSection";
 import ShopSection from "@/components/ShopSection";
 import AIAssistant from "@/components/AIAssistant";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import PopularSolutions from "@/components/PopularSolutions";
+import FAQSection from "@/components/FAQSection";
+import CostCalculator from "@/components/CostCalculator";
+import UrgencyBanner from "@/components/UrgencyBanner";
+import SuccessCases from "@/components/SuccessCases";
+import ComparisonSection from "@/components/ComparisonSection";
 import ScrollReveal from "@/components/ScrollReveal";
 import PhoenixLogo from "@/components/PhoenixLogo";
 import { useState, useEffect } from "react";
@@ -93,20 +100,20 @@ const Index = () => {
               ⭐ Новое начало уже близко
             </Badge>
             <h2 className="text-6xl font-bold mb-6 hero-title">
-              Путь к финансовому возрождению
+              Спишите долги законно за 5-7 месяцев
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Умная платформа для диагностики банкротства, подбора проверенных специалистов 
-              и безопасного ведения процедуры от начала до конца
+              Более 500 клиентов уже списали ₽3.2 млрд долгов через Феникс. 
+              Безопасная платформа с проверенными специалистами и защитой через Escrow
             </p>
             <div className="flex gap-4 justify-center mt-8">
-              <Button size="lg" className="gap-2 hover:scale-105 transition-transform" onClick={() => document.getElementById('diagnostic')?.scrollIntoView({ behavior: 'smooth' })}>
+              <Button size="lg" className="gap-2 hover:scale-105 transition-transform shadow-lg" onClick={() => document.getElementById('diagnostic')?.scrollIntoView({ behavior: 'smooth' })}>
                 <Icon name="Calculator" size={20} />
-                Начать диагностику
+                Узнать за 3 минуты, подходит ли мне банкротство
               </Button>
               <Button size="lg" variant="outline" className="gap-2 hover:scale-105 transition-transform group border-accent/30 hover:border-accent hover:bg-accent/10">
-                <Icon name="Play" size={20} className="text-accent group-hover:scale-110 transition-transform" />
-                Смотреть видео
+                <Icon name="Phone" size={20} className="text-accent group-hover:scale-110 transition-transform" />
+                Консультация за 3000₽
               </Button>
             </div>
           </div>
@@ -153,9 +160,16 @@ const Index = () => {
         </div>
       </section>
 
+      <UrgencyBanner />
+      <TestimonialsSection />
+      <PopularSolutions />
       <DiagnosticSection />
+      <CostCalculator />
+      <ComparisonSection />
+      <SuccessCases />
       <SpecialistsSection />
       <ExpertiseSection />
+      <FAQSection />
       <AcademySection />
       <MediationSection />
       <ShopSection />
