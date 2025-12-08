@@ -11,8 +11,35 @@ import ShopSection from "@/components/ShopSection";
 import AIAssistant from "@/components/AIAssistant";
 import ScrollReveal from "@/components/ScrollReveal";
 import PhoenixLogo from "@/components/PhoenixLogo";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Index = () => {
+  const navigate = useNavigate();
+  const [cartCount, setCartCount] = useState(0);
+
+  useEffect(() => {
+    const updateCartCount = () => {
+      const cart = localStorage.getItem('cartItems');
+      if (cart) {
+        const items = JSON.parse(cart);
+        setCartCount(items.length);
+      } else {
+        setCartCount(0);
+      }
+    };
+
+    updateCartCount();
+    window.addEventListener('storage', updateCartCount);
+    
+    const interval = setInterval(updateCartCount, 500);
+
+    return () => {
+      window.removeEventListener('storage', updateCartCount);
+      clearInterval(interval);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-background relative">
       <div className="parallax-bg">
@@ -37,6 +64,19 @@ const Index = () => {
               <a href="#mediation" className="text-sm hover:text-primary transition-all relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Медиация</a>
             </nav>
             <div className="flex gap-2">
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={() => navigate('/cart')}
+                className="relative"
+              >
+                <Icon name="ShoppingCart" size={18} />
+                {cartCount > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
+                    {cartCount}
+                  </span>
+                )}
+              </Button>
               <Button variant="outline" size="sm" onClick={() => window.location.href = '/specialist-login'} className="hidden md:flex">
                 Для специалистов
               </Button>
