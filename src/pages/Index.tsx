@@ -20,7 +20,11 @@ const Index = () => {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <PhoenixLogo size={48} className="drop-shadow-lg" />
+              <img 
+                src="https://cdn.poehali.dev/files/феникс 3.jpg" 
+                alt="Phoenix Logo" 
+                className="w-12 h-12 object-contain drop-shadow-lg"
+              />
               <div>
                 <h1 className="text-2xl font-bold header-title">Феникс</h1>
                 <p className="text-xs text-muted-foreground">Навигатор банкротства</p>
