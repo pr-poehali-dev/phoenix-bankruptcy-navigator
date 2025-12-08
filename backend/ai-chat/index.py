@@ -1,12 +1,13 @@
 import json
 import os
+import requests
 from typing import Dict, Any, List
 
 def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     '''
-    AI-ассистент для консультаций по банкротству
+    AI-ассистент для консультаций по банкротству через YandexGPT
     Args: event с httpMethod, body (message, history)
-    Returns: ответ от OpenAI API
+    Returns: ответ от YandexGPT API
     '''
     method: str = event.get('httpMethod', 'GET')
     
@@ -32,8 +33,6 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
         }
     
     try:
-        import openai
-        
         body_data = json.loads(event.get('body', '{}'))
         user_message: str = body_data.get('message', '')
         history: List[Dict[str, str]] = body_data.get('history', [])
@@ -46,16 +45,16 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
                 'isBase64Encoded': False
             }
         
-        api_key = os.environ.get('OPENAI_API_KEY')
-        if not api_key:
+        api_key = os.environ.get('YANDEX_API_KEY')
+        folder_id = os.environ.get('YANDEX_FOLDER_ID')
+        
+        if not api_key or not folder_id:
             return {
                 'statusCode': 500,
                 'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
-                'body': json.dumps({'error': 'OpenAI API key not configured'}),
+                'body': json.dumps({'error': 'YandexGPT credentials not configured'}),
                 'isBase64Encoded': False
             }
-        
-        client = openai.OpenAI(api_key=api_key)
         
         system_prompt = """Ты — профессиональный AI-ассистент платформы "Феникс: Навигатор банкротства". 
 Твоя задача — консультировать пользователей по вопросам банкротства физических лиц в России.
@@ -77,24 +76,57 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
 
 Отвечай кратко (2-4 предложения), структурированно, дружелюбно."""
 
-        messages = [{"role": "system", "content": system_prompt}]
+        messages = [{"role": "system", "text": system_prompt}]
         
         for msg in history[-5:]:
+            role = msg.get("role", "user")
+            if role == "assistant":
+                role = "assistant"
             messages.append({
-                "role": msg.get("role", "user"),
-                "content": msg.get("content", "")
+                "role": role,
+                "text": msg.get("content", "")
             })
         
-        messages.append({"role": "user", "content": user_message})
+        messages.append({"role": "user", "text": user_message})
         
-        response = client.chat.completions.create(
-            model="gpt-4o-mini",
-            messages=messages,
-            temperature=0.7,
-            max_tokens=500
-        )
+        url = "https://llm.api.cloud.yandex.net/foundationModels/v1/completion"
+        headers = {
+            "Content-Type": "application/json",
+            "Authorization": f"Api-Key {api_key}",
+            "x-folder-id": folder_id
+        }
         
-        ai_message = response.choices[0].message.content
+        payload = {
+            "modelUri": f"gpt://{folder_id}/yandexgpt-lite",
+            "completionOptions": {
+                "stream": False,
+                "temperature": 0.6,
+                "maxTokens": 500
+            },
+            "messages": messages
+        }
+        
+        response = requests.post(url, headers=headers, json=payload, timeout=30)
+        
+        if not response.ok:
+            error_text = response.text
+            return {
+                'statusCode': response.status_code,
+                'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+                'body': json.dumps({'error': f'YandexGPT API error: {error_text}'}),
+                'isBase64Encoded': False
+            }
+        
+        result = response.json()
+        ai_message = result.get("result", {}).get("alternatives", [{}])[0].get("message", {}).get("text", "")
+        
+        if not ai_message:
+            return {
+                'statusCode': 500,
+                'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+                'body': json.dumps({'error': 'Empty response from YandexGPT'}),
+                'isBase64Encoded': False
+            }
         
         return {
             'statusCode': 200,
@@ -104,7 +136,7 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
             },
             'body': json.dumps({
                 'message': ai_message,
-                'model': 'gpt-4o-mini'
+                'model': 'yandexgpt-lite'
             }, ensure_ascii=False),
             'isBase64Encoded': False
         }
@@ -114,6 +146,13 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
             'statusCode': 400,
             'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
             'body': json.dumps({'error': 'Invalid JSON'}),
+            'isBase64Encoded': False
+        }
+    except requests.exceptions.Timeout:
+        return {
+            'statusCode': 504,
+            'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+            'body': json.dumps({'error': 'Request timeout'}),
             'isBase64Encoded': False
         }
     except Exception as e:
