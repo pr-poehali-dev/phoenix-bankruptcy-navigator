@@ -77,7 +77,8 @@ const SpecialistsSection = () => {
                   <Badge variant="outline" className="mb-2">{specialist.specialization}</Badge>
                   <p className="text-xs text-muted-foreground">Опыт: {specialist.experience}</p>
                 </div>
-                <Button className="w-full mt-4 hover:bg-primary hover:text-white transition-all" variant="outline">
+                <Button className="w-full mt-4 hover:bg-gradient-to-r hover:from-primary hover:to-accent hover:text-white transition-all border-primary/30" variant="outline">
+                  <Icon name="UserCheck" size={16} className="mr-2" />
                   Выбрать специалиста
                 </Button>
               </CardContent>
@@ -120,10 +121,10 @@ const SpecialistsSection = () => {
                 <p className="text-sm font-medium group-hover:text-primary transition-colors">Подтверждение</p>
               </div>
               <div className="text-center group cursor-pointer">
-                <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:bg-accent/20 group-hover:scale-110 transition-all">
+                <div className="w-12 h-12 bg-accent/15 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:bg-accent/30 group-hover:scale-110 transition-all shadow-sm">
                   <Icon name="ArrowRight" className="text-accent" size={20} />
                 </div>
-                <p className="text-sm font-medium group-hover:text-accent transition-colors">Перевод специалисту</p>
+                <p className="text-sm font-medium text-accent group-hover:font-semibold transition-all">Перевод специалисту</p>
               </div>
             </div>
           </CardContent>

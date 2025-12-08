@@ -45,7 +45,7 @@ const MediationSection = () => {
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <Icon name="FileText" className="text-accent mt-1" size={20} />
+                <Icon name="Award" className="text-accent mt-1" size={20} />
                 <div>
                   <p className="font-medium">Медиативное соглашение</p>
                   <p className="text-sm text-muted-foreground">Юридически грамотный документ</p>
@@ -67,7 +67,7 @@ const MediationSection = () => {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex items-start gap-3">
-                <Icon name="Heart" className="text-accent mt-1" size={20} />
+                <Icon name="ShieldCheck" className="text-accent mt-1" size={20} />
                 <div>
                   <p className="font-medium">Конфиденциальность</p>
                   <p className="text-sm text-muted-foreground">Полная анонимность и безопасность</p>
@@ -87,7 +87,10 @@ const MediationSection = () => {
                   <p className="text-sm text-muted-foreground">В среднем 2-4 недели vs 6-12 месяцев суда</p>
                 </div>
               </div>
-              <Button className="w-full mt-4 hover:scale-105 transition-transform">Начать медиацию</Button>
+              <Button className="w-full mt-4 hover:scale-105 transition-transform bg-gradient-to-r from-primary to-primary hover:from-primary hover:to-accent shadow-md">
+                <Icon name="Handshake" size={16} className="mr-2" />
+                Начать медиацию
+              </Button>
             </CardContent>
           </Card>
           </div>

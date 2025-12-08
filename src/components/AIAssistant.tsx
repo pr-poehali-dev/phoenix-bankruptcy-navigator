@@ -108,7 +108,7 @@ const AIAssistant = () => {
         <Button
           onClick={() => setIsOpen(true)}
           size="lg"
-          className="fixed bottom-6 right-6 rounded-full w-16 h-16 shadow-2xl hover:scale-110 transition-transform z-50"
+          className="fixed bottom-6 right-6 rounded-full w-16 h-16 shadow-2xl hover:scale-110 transition-transform z-50 bg-gradient-to-br from-primary to-accent border-2 border-accent/50"
         >
           <Icon name="MessageCircle" size={28} />
         </Button>
@@ -116,7 +116,7 @@ const AIAssistant = () => {
 
       {isOpen && (
         <Card className="fixed bottom-6 right-6 w-[400px] h-[600px] shadow-2xl z-50 flex flex-col">
-          <CardHeader className="border-b bg-gradient-to-r from-primary to-secondary text-white">
+          <CardHeader className="border-b bg-gradient-to-r from-primary via-primary to-accent text-white shadow-md">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
@@ -186,7 +186,7 @@ const AIAssistant = () => {
                     <Badge
                       key={index}
                       variant="outline"
-                      className="cursor-pointer hover:bg-primary hover:text-white transition-colors"
+                      className="cursor-pointer hover:bg-gradient-to-r hover:from-primary hover:to-accent hover:text-white hover:border-accent transition-all border-accent/30"
                       onClick={() => handleQuickQuestion(question)}
                     >
                       {question}
@@ -205,7 +205,7 @@ const AIAssistant = () => {
                   onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
                   className="flex-1"
                 />
-                <Button onClick={handleSendMessage} disabled={!inputValue.trim()}>
+                <Button onClick={handleSendMessage} disabled={!inputValue.trim()} className="bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary transition-all shadow-md">
                   <Icon name="Send" size={20} />
                 </Button>
               </div>

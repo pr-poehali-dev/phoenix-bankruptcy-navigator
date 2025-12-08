@@ -41,7 +41,7 @@ const Index = () => {
       <section className="py-20 px-4">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12 animate-fade-in">
-            <Badge className="mb-4 bg-accent/10 text-accent border-accent/20 hover:bg-accent/20">
+            <Badge className="mb-4 bg-accent/15 text-accent border-accent/30 hover:bg-accent/25 shadow-sm">
               ⭐ Новое начало уже близко
             </Badge>
             <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-primary via-primary to-accent bg-clip-text text-transparent">
@@ -56,8 +56,8 @@ const Index = () => {
                 <Icon name="Calculator" size={20} />
                 Начать диагностику
               </Button>
-              <Button size="lg" variant="outline" className="gap-2 hover:scale-105 transition-transform group">
-                <Icon name="Play" size={20} className="group-hover:scale-110 transition-transform" />
+              <Button size="lg" variant="outline" className="gap-2 hover:scale-105 transition-transform group border-accent/30 hover:border-accent hover:bg-accent/10">
+                <Icon name="Play" size={20} className="text-accent group-hover:scale-110 transition-transform" />
                 Смотреть видео
               </Button>
             </div>
@@ -77,9 +77,9 @@ const Index = () => {
               </CardHeader>
             </Card>
 
-            <Card className="hover-scale border-accent/20 shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
+            <Card className="hover-scale border-accent/30 shadow-sm hover:shadow-lg hover:shadow-accent/20 transition-all cursor-pointer group">
               <CardHeader>
-                <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
+                <div className="w-12 h-12 bg-accent/15 rounded-xl flex items-center justify-center mb-4 group-hover:bg-accent/30 transition-colors shadow-sm">
                   <Icon name="Users" className="text-accent group-hover:scale-110 transition-transform" size={24} />
                 </div>
                 <CardTitle>Проверенные эксперты</CardTitle>

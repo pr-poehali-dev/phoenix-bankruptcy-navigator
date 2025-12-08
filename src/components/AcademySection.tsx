@@ -54,7 +54,7 @@ const AcademySection = () => {
                 <Card key={index} className="hover-scale shadow-sm hover:shadow-md transition-shadow border-primary/20">
                   <CardHeader>
                     <div className="flex items-center gap-2 mb-2">
-                      <Badge className="bg-accent/10 text-accent border-accent/20">{course.type}</Badge>
+                      <Badge className="bg-accent/15 text-accent border-accent/30 shadow-sm">{course.type}</Badge>
                       <span className="text-sm text-muted-foreground">{course.duration}</span>
                     </div>
                     <CardTitle className="text-lg">{course.title}</CardTitle>
@@ -68,7 +68,8 @@ const AcademySection = () => {
                         </li>
                       ))}
                     </ul>
-                    <Button className="w-full hover:bg-primary hover:text-white transition-all group" variant="outline">
+                    <Button className="w-full hover:bg-gradient-to-r hover:from-primary hover:to-accent hover:text-white transition-all group border-primary/30" variant="outline">
+                      <Icon name="GraduationCap" size={16} className="mr-2" />
                       <span>Начать обучение</span>
                       <Icon name="ArrowRight" className="ml-2 group-hover:translate-x-1 transition-transform" size={16} />
                     </Button>
@@ -90,7 +91,10 @@ const AcademySection = () => {
                     Клиент имел задолженность по ипотеке 2.5 млн ₽ и долги перед МФО на 800 тыс ₽. 
                     Через процедуру банкротства удалось списать долги МФО и реструктурировать ипотеку.
                   </p>
-                  <Badge className="bg-primary/10 text-primary border-primary/20">Срок: 8 месяцев</Badge>
+                  <div className="flex items-center gap-2">
+                    <Icon name="Clock" size={14} className="text-accent" />
+                    <Badge className="bg-accent/15 text-accent border-accent/30">Срок: 8 месяцев</Badge>
+                  </div>
                 </CardContent>
               </Card>
 
@@ -104,7 +108,10 @@ const AcademySection = () => {
                     Индивидуальный предприниматель с долгами перед поставщиками на 3.2 млн ₽. 
                     Процедура банкротства позволила списать долги и начать новый бизнес.
                   </p>
-                  <Badge className="bg-primary/10 text-primary border-primary/20">Срок: 10 месяцев</Badge>
+                  <div className="flex items-center gap-2">
+                    <Icon name="Clock" size={14} className="text-accent" />
+                    <Badge className="bg-accent/15 text-accent border-accent/30">Срок: 10 месяцев</Badge>
+                  </div>
                 </CardContent>
               </Card>
             </div>
