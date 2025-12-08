@@ -7,10 +7,14 @@ import SpecialistsSection from "@/components/SpecialistsSection";
 import AcademySection from "@/components/AcademySection";
 import MediationSection from "@/components/MediationSection";
 import AIAssistant from "@/components/AIAssistant";
+import ScrollReveal from "@/components/ScrollReveal";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      <div className="parallax-bg">
+        <div className="parallax-pattern" />
+      </div>
       <header className="border-b bg-card/95 backdrop-blur-sm sticky top-0 z-50 shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
@@ -59,8 +63,9 @@ const Index = () => {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 mt-16">
-            <Card className="hover-scale border-primary/20 shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
+          <ScrollReveal>
+            <div className="grid md:grid-cols-3 gap-6 mt-16">
+              <Card className="hover-scale border-primary/20 shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
               <CardHeader>
                 <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
                   <Icon name="ShieldCheck" className="text-primary group-hover:scale-110 transition-transform" size={24} />
@@ -95,7 +100,8 @@ const Index = () => {
                 </CardDescription>
               </CardHeader>
             </Card>
-          </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 

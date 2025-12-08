@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Icon from "@/components/ui/icon";
+import ScrollReveal from "@/components/ScrollReveal";
 
 const SpecialistsSection = () => {
   const specialists = [
@@ -35,16 +36,19 @@ const SpecialistsSection = () => {
   ];
 
   return (
-    <section id="specialists" className="py-20 px-4">
+    <section id="specialists" className="py-20 px-4 relative">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4">Проверенные специалисты</h2>
-          <p className="text-lg text-muted-foreground">
-            Подбираем эксперта под ваш конкретный случай
-          </p>
-        </div>
+        <ScrollReveal>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4">Проверенные специалисты</h2>
+            <p className="text-lg text-muted-foreground">
+              Подбираем эксперта под ваш конкретный случай
+            </p>
+          </div>
+        </ScrollReveal>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <ScrollReveal delay={200}>
+          <div className="grid md:grid-cols-3 gap-6">
           {specialists.map((specialist, index) => (
             <Card key={index} className="hover-scale shadow-sm hover:shadow-md transition-shadow border-primary/20">
               <CardHeader>
@@ -79,9 +83,11 @@ const SpecialistsSection = () => {
               </CardContent>
             </Card>
           ))}
-        </div>
+          </div>
+        </ScrollReveal>
 
-        <Card className="mt-12 bg-gradient-to-r from-primary/5 to-accent/5 border-accent/30 shadow-md">
+        <ScrollReveal delay={400}>
+          <Card className="mt-12 bg-gradient-to-r from-primary/5 to-accent/5 border-accent/30 shadow-md">
           <CardHeader>
             <div className="flex items-center gap-3">
               <Icon name="Shield" className="text-primary" size={32} />
@@ -122,6 +128,7 @@ const SpecialistsSection = () => {
             </div>
           </CardContent>
         </Card>
+        </ScrollReveal>
       </div>
     </section>
   );

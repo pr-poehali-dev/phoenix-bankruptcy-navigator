@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import Icon from "@/components/ui/icon";
+import ScrollReveal from "@/components/ScrollReveal";
 
 const AcademySection = () => {
   const courses = [
@@ -28,16 +29,19 @@ const AcademySection = () => {
   ];
 
   return (
-    <section id="academy" className="py-20 px-4 bg-card">
+    <section id="academy" className="py-20 px-4 bg-card relative">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4">Академия Феникса</h2>
-          <p className="text-lg text-muted-foreground">
-            Обучающие материалы для понимания процесса банкротства
-          </p>
-        </div>
+        <ScrollReveal>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4">Академия Феникса</h2>
+            <p className="text-lg text-muted-foreground">
+              Обучающие материалы для понимания процесса банкротства
+            </p>
+          </div>
+        </ScrollReveal>
 
-        <Tabs defaultValue="courses" className="w-full">
+        <ScrollReveal delay={200}>
+          <Tabs defaultValue="courses" className="w-full">
           <TabsList className="grid w-full max-w-md mx-auto grid-cols-3">
             <TabsTrigger value="courses">Курсы</TabsTrigger>
             <TabsTrigger value="cases">Кейсы</TabsTrigger>
@@ -135,6 +139,7 @@ const AcademySection = () => {
             </Accordion>
           </TabsContent>
         </Tabs>
+        </ScrollReveal>
       </div>
     </section>
   );

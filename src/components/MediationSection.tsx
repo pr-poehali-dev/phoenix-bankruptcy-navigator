@@ -2,19 +2,23 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
 import StatsCounter from "@/components/StatsCounter";
+import ScrollReveal from "@/components/ScrollReveal";
 
 const MediationSection = () => {
   return (
-    <section id="mediation" className="py-20 px-4 bg-gradient-to-br from-primary/5 to-accent/5">
+    <section id="mediation" className="py-20 px-4 bg-gradient-to-br from-primary/5 to-accent/5 relative">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4">Медиация онлайн</h2>
-          <p className="text-lg text-muted-foreground">
-            Разрешите спор без суда — быстрее и дешевле
-          </p>
-        </div>
+        <ScrollReveal>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4">Медиация онлайн</h2>
+            <p className="text-lg text-muted-foreground">
+              Разрешите спор без суда — быстрее и дешевле
+            </p>
+          </div>
+        </ScrollReveal>
 
-        <div className="grid lg:grid-cols-2 gap-8">
+        <ScrollReveal delay={200}>
+          <div className="grid lg:grid-cols-2 gap-8">
           <Card className="shadow-md border-primary/20">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
@@ -86,9 +90,11 @@ const MediationSection = () => {
               <Button className="w-full mt-4 hover:scale-105 transition-transform">Начать медиацию</Button>
             </CardContent>
           </Card>
-        </div>
+          </div>
+        </ScrollReveal>
 
-        <Card className="mt-8 bg-card shadow-md border-primary/20">
+        <ScrollReveal delay={400}>
+          <Card className="mt-8 bg-card shadow-md border-primary/20">
           <CardHeader>
             <CardTitle className="text-center">Преимущества медиации</CardTitle>
           </CardHeader>
@@ -121,6 +127,7 @@ const MediationSection = () => {
             </div>
           </CardContent>
         </Card>
+        </ScrollReveal>
       </div>
     </section>
   );

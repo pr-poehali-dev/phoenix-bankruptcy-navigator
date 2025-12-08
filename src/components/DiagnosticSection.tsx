@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import Icon from "@/components/ui/icon";
+import ScrollReveal from "@/components/ScrollReveal";
 
 const DiagnosticSection = () => {
   const [debts, setDebts] = useState("");
@@ -32,16 +33,19 @@ const DiagnosticSection = () => {
   };
 
   return (
-    <section id="diagnostic" className="py-20 px-4 bg-card">
+    <section id="diagnostic" className="py-20 px-4 bg-card relative">
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4">Диагностика и симулятор</h2>
-          <p className="text-lg text-muted-foreground">
-            Анонимный анализ вашей ситуации с помощью ИИ-ассистента
-          </p>
-        </div>
+        <ScrollReveal>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4">Диагностика и симулятор</h2>
+            <p className="text-lg text-muted-foreground">
+              Анонимный анализ вашей ситуации с помощью ИИ-ассистента
+            </p>
+          </div>
+        </ScrollReveal>
 
-        <div className="grid lg:grid-cols-2 gap-8">
+        <ScrollReveal delay={200}>
+          <div className="grid lg:grid-cols-2 gap-8">
           <Card className="shadow-md border-primary/20">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
@@ -129,7 +133,8 @@ const DiagnosticSection = () => {
               </div>
             </CardContent>
           </Card>
-        </div>
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   );
