@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Badge } from "@/components/ui/badge";
 import Icon from "@/components/ui/icon";
 import PhoenixLogo from "@/components/PhoenixLogo";
 import { useNavigate } from "react-router-dom";
@@ -20,7 +21,9 @@ const SpecialistLogin = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-accent/5 to-primary/5 flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
+      <div className="w-full max-w-5xl">
+        <div className="grid md:grid-cols-2 gap-6">
+        <div>
         <div className="text-center mb-8 cursor-pointer" onClick={() => navigate("/")}>
           <div className="flex items-center justify-center gap-3 mb-4">
             <PhoenixLogo size={64} className="drop-shadow-lg" />
@@ -29,7 +32,7 @@ const SpecialistLogin = () => {
           <p className="text-muted-foreground">Навигатор банкротства</p>
         </div>
 
-        <Card className="shadow-xl border-accent/30">
+        <Card className="shadow-xl border-accent/30 h-fit">
           <CardHeader>
             <CardTitle className="text-2xl">{isLogin ? "Вход для специалистов" : "Регистрация специалиста"}</CardTitle>
             <CardDescription>
@@ -181,6 +184,143 @@ const SpecialistLogin = () => {
             </div>
           </CardContent>
         </Card>
+        </div>
+
+        <div>
+          <Card className="shadow-xl border-primary/30 bg-gradient-to-br from-primary/5 to-accent/5 sticky top-4">
+            <CardHeader>
+              <div className="flex items-center justify-between mb-2">
+                <Badge className="bg-green-500 text-white">Платная подписка</Badge>
+                <div className="text-right">
+                  <div className="text-3xl font-bold text-primary">999 ₽</div>
+                  <div className="text-sm text-muted-foreground">в месяц</div>
+                </div>
+              </div>
+              <CardTitle className="text-2xl">Преимущества регистрации</CardTitle>
+              <CardDescription>
+                Получите доступ к потоку клиентов и инструментам для роста
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="space-y-4">
+                <div className="flex items-start gap-3 p-3 bg-white rounded-lg">
+                  <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Icon name="User" size={20} className="text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-1">Профессиональная карточка</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Создайте уникальный профиль со всеми вашими услугами, опытом и достижениями
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 p-3 bg-white rounded-lg">
+                  <div className="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Icon name="Users" size={20} className="text-accent" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-1">Поток готовых клиентов</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Не тратьте деньги на рекламу — мы привлекаем клиентов и направляем их к вам
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 p-3 bg-white rounded-lg">
+                  <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Icon name="Video" size={20} className="text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-1">Контент-маркетинг</h4>
+                    <p className="text-sm text-muted-foreground">
+                      До 3 видео + 1 профессиональная статья в месяц для демонстрации экспертности
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 p-3 bg-white rounded-lg">
+                  <div className="w-10 h-10 bg-green-500/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Icon name="ShieldCheck" size={20} className="text-green-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-1">Безопасные сделки</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Escrow-гарантия расчетов через платформу — деньги защищены до выполнения работы
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 p-3 bg-white rounded-lg">
+                  <div className="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Icon name="TrendingUp" size={20} className="text-accent" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-1">Выделяйтесь среди конкурентов</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Рейтинги, отзывы клиентов и статистика дел повышают доверие и конверсию
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 p-3 bg-white rounded-lg">
+                  <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Icon name="Briefcase" size={20} className="text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-1">Управление делами</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Личный кабинет с CRM: ведение клиентов, документы, сроки, оплаты в одном месте
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 p-3 bg-white rounded-lg">
+                  <div className="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Icon name="BarChart" size={20} className="text-accent" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-1">Аналитика и рост</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Статистика просмотров профиля, конверсии заявок и рекомендации по улучшению
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3 p-3 bg-white rounded-lg">
+                  <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Icon name="Award" size={20} className="text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-1">Верификация и доверие</h4>
+                    <p className="text-sm text-muted-foreground">
+                      Значок "Проверенный специалист" после модерации документов и лицензий
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-lg p-4">
+                <div className="flex items-start gap-2 mb-3">
+                  <Icon name="TrendingUp" size={20} className="text-green-600 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-semibold text-green-800">Средний доход специалистов</p>
+                    <p className="text-2xl font-bold text-green-700">+120 000 ₽/мес</p>
+                    <p className="text-xs text-green-600 mt-1">
+                      За вычетом стоимости подписки вы экономите на рекламе 15-30 тыс. ₽/мес
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="text-center text-xs text-muted-foreground">
+                <Icon name="Info" size={12} className="inline mr-1" />
+                Подписка активируется после одобрения заявки модерацией
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+        </div>
       </div>
     </div>
   );
