@@ -108,7 +108,7 @@ const AIAssistant = () => {
         <Button
           onClick={() => setIsOpen(true)}
           size="lg"
-          className="fixed bottom-6 right-6 rounded-full w-16 h-16 shadow-2xl hover:scale-110 transition-transform z-50 bg-gradient-to-br from-primary to-accent border-2 border-accent/50"
+          className="fixed bottom-6 right-6 rounded-full w-16 h-16 shadow-2xl hover:scale-110 transition-transform z-50 bg-gradient-to-br from-primary to-accent border-2 border-accent/50 shimmer-slow gold-glow"
         >
           <Icon name="MessageCircle" size={28} />
         </Button>

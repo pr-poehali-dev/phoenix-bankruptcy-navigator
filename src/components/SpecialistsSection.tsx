@@ -53,7 +53,7 @@ const SpecialistsSection = () => {
             <Card key={index} className="hover-scale shadow-sm hover:shadow-md transition-shadow border-primary/20">
               <CardHeader>
                 <div className="flex items-start justify-between mb-4">
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-md">
+                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-md shimmer-slow gold-glow">
                     {specialist.name.charAt(0)}
                   </div>
                   <div className="flex items-center gap-1">
@@ -121,7 +121,7 @@ const SpecialistsSection = () => {
                 <p className="text-sm font-medium group-hover:text-primary transition-colors">Подтверждение</p>
               </div>
               <div className="text-center group cursor-pointer">
-                <div className="w-12 h-12 bg-accent/15 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:bg-accent/30 group-hover:scale-110 transition-all shadow-sm">
+                <div className="w-12 h-12 bg-accent/15 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:bg-accent/30 group-hover:scale-110 transition-all shadow-sm shimmer gold-glow">
                   <Icon name="ArrowRight" className="text-accent" size={20} />
                 </div>
                 <p className="text-sm font-medium text-accent group-hover:font-semibold transition-all">Перевод специалисту</p>

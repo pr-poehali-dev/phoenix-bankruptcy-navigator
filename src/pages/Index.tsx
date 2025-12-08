@@ -41,7 +41,7 @@ const Index = () => {
       <section className="py-20 px-4">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12 animate-fade-in">
-            <Badge className="mb-4 bg-accent/15 text-accent border-accent/30 hover:bg-accent/25 shadow-sm">
+            <Badge className="mb-4 bg-accent/15 text-accent border-accent/30 hover:bg-accent/25 shadow-sm shimmer-slow">
               ⭐ Новое начало уже близко
             </Badge>
             <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-primary via-primary to-accent bg-clip-text text-transparent">
@@ -77,7 +77,7 @@ const Index = () => {
               </CardHeader>
             </Card>
 
-            <Card className="hover-scale border-accent/30 shadow-sm hover:shadow-lg hover:shadow-accent/20 transition-all cursor-pointer group">
+            <Card className="hover-scale border-accent/30 shadow-sm hover:shadow-lg hover:shadow-accent/20 transition-all cursor-pointer group shimmer-slow">
               <CardHeader>
                 <div className="w-12 h-12 bg-accent/15 rounded-xl flex items-center justify-center mb-4 group-hover:bg-accent/30 transition-colors shadow-sm">
                   <Icon name="Users" className="text-accent group-hover:scale-110 transition-transform" size={24} />

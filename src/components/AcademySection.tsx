@@ -54,7 +54,7 @@ const AcademySection = () => {
                 <Card key={index} className="hover-scale shadow-sm hover:shadow-md transition-shadow border-primary/20">
                   <CardHeader>
                     <div className="flex items-center gap-2 mb-2">
-                      <Badge className="bg-accent/15 text-accent border-accent/30 shadow-sm">{course.type}</Badge>
+                      <Badge className="bg-accent/15 text-accent border-accent/30 shadow-sm shimmer-slow">{course.type}</Badge>
                       <span className="text-sm text-muted-foreground">{course.duration}</span>
                     </div>
                     <CardTitle className="text-lg">{course.title}</CardTitle>

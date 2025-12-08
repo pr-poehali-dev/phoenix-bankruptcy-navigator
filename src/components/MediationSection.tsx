@@ -87,7 +87,7 @@ const MediationSection = () => {
                   <p className="text-sm text-muted-foreground">В среднем 2-4 недели vs 6-12 месяцев суда</p>
                 </div>
               </div>
-              <Button className="w-full mt-4 hover:scale-105 transition-transform bg-gradient-to-r from-primary to-primary hover:from-primary hover:to-accent shadow-md">
+              <Button className="w-full mt-4 hover:scale-105 transition-transform bg-gradient-to-r from-primary to-primary hover:from-primary hover:to-accent shadow-md shimmer gold-glow">
                 <Icon name="Handshake" size={16} className="mr-2" />
                 Начать медиацию
               </Button>
