@@ -100,8 +100,8 @@ const ClientDashboard = () => {
                 <p className="text-xs text-muted-foreground">{user.email}</p>
               </div>
               <Button variant="outline" size="sm" onClick={() => navigate("/")}>
-                <Icon name="LogOut" size={16} className="mr-2" />
-                Выйти
+                <Icon name="ArrowLeft" size={16} className="mr-2" />
+                Вернуться на сайт
               </Button>
             </div>
           </div>
