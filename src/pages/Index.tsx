@@ -21,9 +21,9 @@ const Index = () => {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <img 
-                src="https://cdn.poehali.dev/files/феникс 3.jpg" 
+                src="https://cdn.poehali.dev/files/феникс 4.jpg" 
                 alt="Phoenix Logo" 
-                className="w-12 h-12 object-contain drop-shadow-lg"
+                className="w-14 h-14 object-contain drop-shadow-lg"
               />
               <div>
                 <h1 className="text-2xl font-bold header-title">Феникс</h1>
