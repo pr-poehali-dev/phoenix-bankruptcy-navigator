@@ -121,6 +121,27 @@ const ShopSection = () => {
       return;
     }
 
+    const cartItem = {
+      serviceId: service.id,
+      title: service.title,
+      description: service.description,
+      price: service.price,
+      icon: service.icon,
+      category: service.category,
+      specialistId: specialistId,
+      specialistName: specialist?.name || '',
+      specialistType: specialist?.type || ''
+    };
+
+    const existingCart = localStorage.getItem('cartItems');
+    const cart = existingCart ? JSON.parse(existingCart) : [];
+    
+    const itemExists = cart.some((item: any) => item.serviceId === service.id);
+    if (!itemExists) {
+      cart.push(cartItem);
+      localStorage.setItem('cartItems', JSON.stringify(cart));
+    }
+
     toast({
       title: "Услуга добавлена в корзину",
       description: `${service.title} со специалистом ${specialist?.name}`,
@@ -128,7 +149,7 @@ const ShopSection = () => {
     });
 
     setTimeout(() => {
-      navigate('/client-login');
+      navigate('/cart');
     }, 1500);
   };
 
