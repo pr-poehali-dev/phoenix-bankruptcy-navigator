@@ -1,6 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
+import StatsCounter from "@/components/StatsCounter";
 
 const MediationSection = () => {
   return (
@@ -46,7 +47,7 @@ const MediationSection = () => {
                   <p className="text-sm text-muted-foreground">Юридически грамотный документ</p>
                 </div>
               </div>
-              <Button className="w-full mt-4">Начать медиацию</Button>
+              <Button className="w-full mt-4 hover:scale-105 transition-transform">Начать медиацию</Button>
             </CardContent>
           </Card>
 
@@ -82,7 +83,7 @@ const MediationSection = () => {
                   <p className="text-sm text-muted-foreground">В среднем 2-4 недели vs 6-12 месяцев суда</p>
                 </div>
               </div>
-              <Button className="w-full mt-4">Начать медиацию</Button>
+              <Button className="w-full mt-4 hover:scale-105 transition-transform">Начать медиацию</Button>
             </CardContent>
           </Card>
         </div>
@@ -93,20 +94,28 @@ const MediationSection = () => {
           </CardHeader>
           <CardContent>
             <div className="grid md:grid-cols-4 gap-6">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-2">80%</div>
+              <div className="text-center group cursor-default">
+                <div className="text-primary group-hover:scale-110 transition-transform">
+                  <StatsCounter end={80} suffix="%" />
+                </div>
                 <p className="text-sm text-muted-foreground">Дешевле суда</p>
               </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-accent mb-2">10x</div>
+              <div className="text-center group cursor-default">
+                <div className="text-accent group-hover:scale-110 transition-transform flex items-center justify-center">
+                  <StatsCounter end={10} suffix="x" />
+                </div>
                 <p className="text-sm text-muted-foreground">Быстрее процесса</p>
               </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-primary mb-2">95%</div>
+              <div className="text-center group cursor-default">
+                <div className="text-primary group-hover:scale-110 transition-transform">
+                  <StatsCounter end={95} suffix="%" />
+                </div>
                 <p className="text-sm text-muted-foreground">Исполнение соглашений</p>
               </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-accent mb-2">100%</div>
+              <div className="text-center group cursor-default">
+                <div className="text-accent group-hover:scale-110 transition-transform">
+                  <StatsCounter end={100} suffix="%" />
+                </div>
                 <p className="text-sm text-muted-foreground">Конфиденциальность</p>
               </div>
             </div>

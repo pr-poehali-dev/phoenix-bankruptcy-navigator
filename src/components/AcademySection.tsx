@@ -64,8 +64,9 @@ const AcademySection = () => {
                         </li>
                       ))}
                     </ul>
-                    <Button className="w-full" variant="outline">
-                      Начать обучение
+                    <Button className="w-full hover:bg-primary hover:text-white transition-all group" variant="outline">
+                      <span>Начать обучение</span>
+                      <Icon name="ArrowRight" className="ml-2 group-hover:translate-x-1 transition-transform" size={16} />
                     </Button>
                   </CardContent>
                 </Card>

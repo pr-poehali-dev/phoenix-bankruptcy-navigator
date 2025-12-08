@@ -73,7 +73,7 @@ const SpecialistsSection = () => {
                   <Badge variant="outline" className="mb-2">{specialist.specialization}</Badge>
                   <p className="text-xs text-muted-foreground">Опыт: {specialist.experience}</p>
                 </div>
-                <Button className="w-full mt-4" variant="outline">
+                <Button className="w-full mt-4 hover:bg-primary hover:text-white transition-all" variant="outline">
                   Выбрать специалиста
                 </Button>
               </CardContent>
@@ -95,29 +95,29 @@ const SpecialistsSection = () => {
           </CardHeader>
           <CardContent>
             <div className="grid md:grid-cols-4 gap-4 mt-4">
-              <div className="text-center">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-2">
+              <div className="text-center group cursor-pointer">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:bg-primary/20 group-hover:scale-110 transition-all">
                   <Icon name="Wallet" className="text-primary" size={20} />
                 </div>
-                <p className="text-sm font-medium">Платёж на платформу</p>
+                <p className="text-sm font-medium group-hover:text-primary transition-colors">Платёж на платформу</p>
               </div>
-              <div className="text-center">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-2">
+              <div className="text-center group cursor-pointer">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:bg-primary/20 group-hover:scale-110 transition-all">
                   <Icon name="FileCheck" className="text-primary" size={20} />
                 </div>
-                <p className="text-sm font-medium">Выполнение этапа</p>
+                <p className="text-sm font-medium group-hover:text-primary transition-colors">Выполнение этапа</p>
               </div>
-              <div className="text-center">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-2">
+              <div className="text-center group cursor-pointer">
+                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:bg-primary/20 group-hover:scale-110 transition-all">
                   <Icon name="CheckCircle" className="text-primary" size={20} />
                 </div>
-                <p className="text-sm font-medium">Подтверждение</p>
+                <p className="text-sm font-medium group-hover:text-primary transition-colors">Подтверждение</p>
               </div>
-              <div className="text-center">
-                <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-2">
+              <div className="text-center group cursor-pointer">
+                <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-2 group-hover:bg-accent/20 group-hover:scale-110 transition-all">
                   <Icon name="ArrowRight" className="text-accent" size={20} />
                 </div>
-                <p className="text-sm font-medium">Перевод специалисту</p>
+                <p className="text-sm font-medium group-hover:text-accent transition-colors">Перевод специалисту</p>
               </div>
             </div>
           </CardContent>

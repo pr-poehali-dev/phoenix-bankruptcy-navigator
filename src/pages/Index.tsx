@@ -24,12 +24,12 @@ const Index = () => {
               </div>
             </div>
             <nav className="hidden md:flex gap-6">
-              <a href="#diagnostic" className="text-sm hover:text-primary transition">Диагностика</a>
-              <a href="#specialists" className="text-sm hover:text-primary transition">Специалисты</a>
-              <a href="#academy" className="text-sm hover:text-primary transition">Академия</a>
-              <a href="#mediation" className="text-sm hover:text-primary transition">Медиация</a>
+              <a href="#diagnostic" className="text-sm hover:text-primary transition-all relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Диагностика</a>
+              <a href="#specialists" className="text-sm hover:text-primary transition-all relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Специалисты</a>
+              <a href="#academy" className="text-sm hover:text-primary transition-all relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Академия</a>
+              <a href="#mediation" className="text-sm hover:text-primary transition-all relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Медиация</a>
             </nav>
-            <Button>Войти</Button>
+            <Button className="hover:scale-105 transition-transform">Войти</Button>
           </div>
         </div>
       </header>
@@ -48,22 +48,22 @@ const Index = () => {
               и безопасного ведения процедуры от начала до конца
             </p>
             <div className="flex gap-4 justify-center mt-8">
-              <Button size="lg" className="gap-2">
+              <Button size="lg" className="gap-2 hover:scale-105 transition-transform" onClick={() => document.getElementById('diagnostic')?.scrollIntoView({ behavior: 'smooth' })}>
                 <Icon name="Calculator" size={20} />
                 Начать диагностику
               </Button>
-              <Button size="lg" variant="outline" className="gap-2">
-                <Icon name="Play" size={20} />
+              <Button size="lg" variant="outline" className="gap-2 hover:scale-105 transition-transform group">
+                <Icon name="Play" size={20} className="group-hover:scale-110 transition-transform" />
                 Смотреть видео
               </Button>
             </div>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 mt-16">
-            <Card className="hover-scale border-primary/20 shadow-sm hover:shadow-md transition-shadow">
+            <Card className="hover-scale border-primary/20 shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
               <CardHeader>
-                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
-                  <Icon name="ShieldCheck" className="text-primary" size={24} />
+                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                  <Icon name="ShieldCheck" className="text-primary group-hover:scale-110 transition-transform" size={24} />
                 </div>
                 <CardTitle>Безопасные сделки</CardTitle>
                 <CardDescription>
@@ -72,10 +72,10 @@ const Index = () => {
               </CardHeader>
             </Card>
 
-            <Card className="hover-scale border-accent/20 shadow-sm hover:shadow-md transition-shadow">
+            <Card className="hover-scale border-accent/20 shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
               <CardHeader>
-                <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-4">
-                  <Icon name="Users" className="text-accent" size={24} />
+                <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
+                  <Icon name="Users" className="text-accent group-hover:scale-110 transition-transform" size={24} />
                 </div>
                 <CardTitle>Проверенные эксперты</CardTitle>
                 <CardDescription>
@@ -84,10 +84,10 @@ const Index = () => {
               </CardHeader>
             </Card>
 
-            <Card className="hover-scale border-primary/20 shadow-sm hover:shadow-md transition-shadow">
+            <Card className="hover-scale border-primary/20 shadow-sm hover:shadow-md transition-shadow cursor-pointer group">
               <CardHeader>
-                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
-                  <Icon name="BookOpen" className="text-primary" size={24} />
+                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                  <Icon name="BookOpen" className="text-primary group-hover:scale-110 transition-transform" size={24} />
                 </div>
                 <CardTitle>Обучение</CardTitle>
                 <CardDescription>

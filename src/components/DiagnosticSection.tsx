@@ -83,11 +83,11 @@ const DiagnosticSection = () => {
                   onChange={(e) => setAssets(e.target.value)}
                 />
               </div>
-              <Button onClick={handleCalculate} className="w-full">
+              <Button onClick={handleCalculate} className="w-full hover:scale-105 transition-transform">
                 Рассчитать прогноз
               </Button>
               {calculatorResult && (
-                <div className="p-4 bg-primary/5 border border-primary/20 rounded-lg">
+                <div className="p-4 bg-primary/5 border border-primary/20 rounded-lg animate-fade-in">
                   <p className="text-sm font-medium">{calculatorResult}</p>
                 </div>
               )}
