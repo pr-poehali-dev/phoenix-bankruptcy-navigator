@@ -32,7 +32,12 @@ const Index = () => {
               <a href="#academy" className="text-sm hover:text-primary transition-all relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Академия</a>
               <a href="#mediation" className="text-sm hover:text-primary transition-all relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Медиация</a>
             </nav>
-            <Button className="hover:scale-105 transition-transform">Войти</Button>
+            <div className="flex gap-2">
+              <Button variant="outline" size="sm" onClick={() => window.location.href = '/specialist-login'} className="hidden md:flex">
+                Для специалистов
+              </Button>
+              <Button className="hover:scale-105 transition-transform" onClick={() => window.location.href = '/client-login'}>Войти</Button>
+            </div>
           </div>
         </div>
       </header>
