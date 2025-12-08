@@ -44,7 +44,7 @@ const Index = () => {
             <Badge className="mb-4 bg-accent/15 text-accent border-accent/30 hover:bg-accent/25 shadow-sm shimmer-slow">
               ⭐ Новое начало уже близко
             </Badge>
-            <h2 className="text-5xl font-bold mb-6 bg-gradient-to-r from-primary via-primary to-accent bg-clip-text text-transparent">
+            <h2 className="text-6xl font-bold mb-6 hero-title">
               Путь к финансовому возрождению
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
