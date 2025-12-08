@@ -344,15 +344,16 @@
 
   .gold-particle {
     position: absolute;
-    width: 8px;
-    height: 8px;
-    background: hsl(45 100% 51%);
+    width: 12px;
+    height: 12px;
+    background: radial-gradient(circle, hsl(45 100% 65%), hsl(45 100% 51%));
     border-radius: 50%;
-    opacity: 0;
+    opacity: 1;
     animation: float-particle 15s infinite ease-in-out;
     box-shadow:
-      0 0 20px hsl(45 100% 51% / 0.9),
-      0 0 40px hsl(45 100% 51% / 0.5);
+      0 0 25px hsl(45 100% 51% / 1),
+      0 0 50px hsl(45 100% 51% / 0.7),
+      0 0 75px hsl(45 100% 51% / 0.4);
   }
 
   .gold-particle:nth-child(1) {
@@ -393,25 +394,33 @@
 
   @keyframes float-particle {
     0% {
-      bottom: -50px;
-      transform: translateX(0) scale(0);
+      bottom: -100px;
+      transform: translateX(0) scale(0.5);
       opacity: 0;
     }
-    10% {
+    5% {
+      opacity: 0.9;
+      transform: translateX(15px) scale(1);
+    }
+    25% {
       opacity: 1;
-      transform: translateX(20px) scale(1);
+      transform: translateX(-25px) scale(1.1);
     }
     50% {
-      opacity: 0.8;
-      transform: translateX(-20px) scale(1.2);
+      opacity: 0.95;
+      transform: translateX(20px) scale(1.15);
     }
-    90% {
-      opacity: 0.4;
-      transform: translateX(10px) scale(1);
+    75% {
+      opacity: 0.8;
+      transform: translateX(-15px) scale(1);
+    }
+    95% {
+      opacity: 0.3;
+      transform: translateX(10px) scale(0.8);
     }
     100% {
-      bottom: 100vh;
-      transform: translateX(0) scale(0.5);
+      bottom: 110vh;
+      transform: translateX(0) scale(0.3);
       opacity: 0;
     }
   }
