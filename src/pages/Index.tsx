@@ -8,6 +8,7 @@ import AcademySection from "@/components/AcademySection";
 import MediationSection from "@/components/MediationSection";
 import AIAssistant from "@/components/AIAssistant";
 import ScrollReveal from "@/components/ScrollReveal";
+import PhoenixLogo from "@/components/PhoenixLogo";
 
 const Index = () => {
   return (
@@ -19,11 +20,9 @@ const Index = () => {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-primary via-primary to-accent rounded-lg flex items-center justify-center shadow-md">
-                <Icon name="Phoenix" className="text-white" size={24} />
-              </div>
+              <PhoenixLogo size={48} className="drop-shadow-lg" />
               <div>
-                <h1 className="text-2xl font-bold text-primary">Феникс</h1>
+                <h1 className="text-2xl font-bold header-title">Феникс</h1>
                 <p className="text-xs text-muted-foreground">Навигатор банкротства</p>
               </div>
             </div>
