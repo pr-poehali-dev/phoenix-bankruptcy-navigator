@@ -3,8 +3,15 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Icon from "@/components/ui/icon";
 import ScrollReveal from "@/components/ScrollReveal";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Label } from "@/components/ui/label";
+import { useState, useMemo } from "react";
 
 const SpecialistsSection = () => {
+  const [specializationFilter, setSpecializationFilter] = useState<string>("all");
+  const [ratingFilter, setRatingFilter] = useState<string>("all");
+  const [sortBy, setSortBy] = useState<string>("rating");
+
   const specialists = [
     {
       name: "Анна Петрова",
@@ -35,6 +42,29 @@ const SpecialistsSection = () => {
     }
   ];
 
+  const filteredAndSortedSpecialists = useMemo(() => {
+    let filtered = [...specialists];
+
+    if (specializationFilter !== "all") {
+      filtered = filtered.filter(s => s.type === specializationFilter);
+    }
+
+    if (ratingFilter === "high") {
+      filtered = filtered.filter(s => s.rating >= 4.8);
+    } else if (ratingFilter === "medium") {
+      filtered = filtered.filter(s => s.rating >= 4.5 && s.rating < 4.8);
+    }
+
+    filtered.sort((a, b) => {
+      if (sortBy === "rating") return b.rating - a.rating;
+      if (sortBy === "cases") return b.cases - a.cases;
+      if (sortBy === "success") return b.success - a.success;
+      return 0;
+    });
+
+    return filtered;
+  }, [specialists, specializationFilter, ratingFilter, sortBy]);
+
   return (
     <section id="specialists" className="py-20 px-4 relative">
       <div className="container mx-auto max-w-6xl">
@@ -48,8 +78,93 @@ const SpecialistsSection = () => {
         </ScrollReveal>
 
         <ScrollReveal delay={200}>
+          <Card className="mb-6">
+            <CardHeader>
+              <CardTitle className="text-lg flex items-center gap-2">
+                <Icon name="Filter" size={20} />
+                Фильтры и сортировка
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid md:grid-cols-3 gap-4">
+                <div className="space-y-2">
+                  <Label>Специализация</Label>
+                  <Select value={specializationFilter} onValueChange={setSpecializationFilter}>
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">Все специалисты</SelectItem>
+                      <SelectItem value="Финансовый управляющий">Финансовый управляющий</SelectItem>
+                      <SelectItem value="Юрист по банкротству">Юрист по банкротству</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label>Рейтинг</Label>
+                  <Select value={ratingFilter} onValueChange={setRatingFilter}>
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">Любой рейтинг</SelectItem>
+                      <SelectItem value="high">Высокий (4.8+)</SelectItem>
+                      <SelectItem value="medium">Средний (4.5-4.8)</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label>Сортировка</Label>
+                  <Select value={sortBy} onValueChange={setSortBy}>
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="rating">По рейтингу</SelectItem>
+                      <SelectItem value="cases">По количеству дел</SelectItem>
+                      <SelectItem value="success">По успешности</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+              <div className="mt-4 flex items-center justify-between">
+                <p className="text-sm text-muted-foreground">
+                  Найдено специалистов: <span className="font-semibold">{filteredAndSortedSpecialists.length}</span>
+                </p>
+                <Button 
+                  variant="ghost" 
+                  size="sm"
+                  onClick={() => {
+                    setSpecializationFilter("all");
+                    setRatingFilter("all");
+                    setSortBy("rating");
+                  }}
+                >
+                  <Icon name="RotateCcw" size={14} className="mr-2" />
+                  Сбросить фильтры
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+
           <div className="grid md:grid-cols-3 gap-6">
-          {specialists.map((specialist, index) => (
+          {filteredAndSortedSpecialists.length === 0 ? (
+            <Card className="col-span-3 p-8">
+              <div className="text-center">
+                <Icon name="SearchX" size={48} className="mx-auto text-muted-foreground mb-4" />
+                <h3 className="text-xl font-semibold mb-2">Специалисты не найдены</h3>
+                <p className="text-muted-foreground mb-4">Попробуйте изменить параметры фильтрации</p>
+                <Button variant="outline" onClick={() => {
+                  setSpecializationFilter("all");
+                  setRatingFilter("all");
+                }}>
+                  Сбросить фильтры
+                </Button>
+              </div>
+            </Card>
+          ) : filteredAndSortedSpecialists.map((specialist, index) => (
             <Card key={index} className="hover-scale shadow-sm hover:shadow-md transition-shadow border-primary/20">
               <CardHeader>
                 <div className="flex items-start justify-between mb-4">
@@ -83,8 +198,7 @@ const SpecialistsSection = () => {
                 </Button>
               </CardContent>
             </Card>
-          ))}
-          </div>
+          ))}\n          </div>
         </ScrollReveal>
 
         <ScrollReveal delay={400}>
