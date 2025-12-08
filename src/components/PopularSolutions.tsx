@@ -14,8 +14,8 @@ const PopularSolutions = () => {
       title: "Банкротство под ключ",
       subtitle: "Самое популярное решение",
       description: "Полное сопровождение от подачи заявления до списания долгов. Юрист + финансовый управляющий.",
-      price: 45000,
-      oldPrice: 65000,
+      price: 170000,
+      oldPrice: 200000,
       icon: "Briefcase",
       badge: "Хит продаж",
       badgeColor: "bg-red-500",
@@ -26,7 +26,7 @@ const PopularSolutions = () => {
         "Работа с кредиторами",
         "Сопровождение до закрытия дела"
       ],
-      savings: "20 000 ₽",
+      savings: "30 000 ₽",
       duration: "5-7 месяцев",
       clients: "340+"
     },
