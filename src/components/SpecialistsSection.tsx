@@ -46,14 +46,14 @@ const SpecialistsSection = () => {
 
         <div className="grid md:grid-cols-3 gap-6">
           {specialists.map((specialist, index) => (
-            <Card key={index} className="hover-scale">
+            <Card key={index} className="hover-scale shadow-sm hover:shadow-md transition-shadow border-primary/20">
               <CardHeader>
                 <div className="flex items-start justify-between mb-4">
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center text-white text-2xl font-bold">
+                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-md">
                     {specialist.name.charAt(0)}
                   </div>
                   <div className="flex items-center gap-1">
-                    <Icon name="Star" size={16} className="text-yellow-500 fill-yellow-500" />
+                    <Icon name="Star" size={16} className="text-accent fill-accent" />
                     <span className="font-bold">{specialist.rating}</span>
                   </div>
                 </div>
@@ -81,7 +81,7 @@ const SpecialistsSection = () => {
           ))}
         </div>
 
-        <Card className="mt-12 bg-gradient-to-r from-primary/5 to-secondary/5 border-primary/20">
+        <Card className="mt-12 bg-gradient-to-r from-primary/5 to-accent/5 border-accent/30 shadow-md">
           <CardHeader>
             <div className="flex items-center gap-3">
               <Icon name="Shield" className="text-primary" size={32} />
@@ -114,8 +114,8 @@ const SpecialistsSection = () => {
                 <p className="text-sm font-medium">Подтверждение</p>
               </div>
               <div className="text-center">
-                <div className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-2">
-                  <Icon name="ArrowRight" className="text-secondary" size={20} />
+                <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-2">
+                  <Icon name="ArrowRight" className="text-accent" size={20} />
                 </div>
                 <p className="text-sm font-medium">Перевод специалисту</p>
               </div>

@@ -28,7 +28,7 @@ const AcademySection = () => {
   ];
 
   return (
-    <section id="academy" className="py-20 px-4 bg-white">
+    <section id="academy" className="py-20 px-4 bg-card">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold mb-4">Академия Феникса</h2>
@@ -47,10 +47,10 @@ const AcademySection = () => {
           <TabsContent value="courses" className="mt-8">
             <div className="grid md:grid-cols-3 gap-6">
               {courses.map((course, index) => (
-                <Card key={index} className="hover-scale">
+                <Card key={index} className="hover-scale shadow-sm hover:shadow-md transition-shadow border-primary/20">
                   <CardHeader>
                     <div className="flex items-center gap-2 mb-2">
-                      <Badge variant="secondary">{course.type}</Badge>
+                      <Badge className="bg-accent/10 text-accent border-accent/20">{course.type}</Badge>
                       <span className="text-sm text-muted-foreground">{course.duration}</span>
                     </div>
                     <CardTitle className="text-lg">{course.title}</CardTitle>
@@ -75,7 +75,7 @@ const AcademySection = () => {
 
           <TabsContent value="cases" className="mt-8">
             <div className="grid md:grid-cols-2 gap-6">
-              <Card>
+              <Card className="shadow-sm border-primary/20">
                 <CardHeader>
                   <CardTitle>Кейс: Ипотека + МФО</CardTitle>
                   <CardDescription>Успешное банкротство с сохранением жилья</CardDescription>
@@ -85,11 +85,11 @@ const AcademySection = () => {
                     Клиент имел задолженность по ипотеке 2.5 млн ₽ и долги перед МФО на 800 тыс ₽. 
                     Через процедуру банкротства удалось списать долги МФО и реструктурировать ипотеку.
                   </p>
-                  <Badge>Срок: 8 месяцев</Badge>
+                  <Badge className="bg-primary/10 text-primary border-primary/20">Срок: 8 месяцев</Badge>
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="shadow-sm border-primary/20">
                 <CardHeader>
                   <CardTitle>Кейс: Банкротство ИП</CardTitle>
                   <CardDescription>Освобождение от долгов по бизнесу</CardDescription>
@@ -99,7 +99,7 @@ const AcademySection = () => {
                     Индивидуальный предприниматель с долгами перед поставщиками на 3.2 млн ₽. 
                     Процедура банкротства позволила списать долги и начать новый бизнес.
                   </p>
-                  <Badge>Срок: 10 месяцев</Badge>
+                  <Badge className="bg-primary/10 text-primary border-primary/20">Срок: 10 месяцев</Badge>
                 </CardContent>
               </Card>
             </div>

@@ -32,7 +32,7 @@ const DiagnosticSection = () => {
   };
 
   return (
-    <section id="diagnostic" className="py-20 px-4 bg-white">
+    <section id="diagnostic" className="py-20 px-4 bg-card">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold mb-4">Диагностика и симулятор</h2>
@@ -42,7 +42,7 @@ const DiagnosticSection = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8">
-          <Card className="shadow-lg">
+          <Card className="shadow-md border-primary/20">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Icon name="Calculator" size={24} />
@@ -94,7 +94,7 @@ const DiagnosticSection = () => {
             </CardContent>
           </Card>
 
-          <Card className="shadow-lg">
+          <Card className="shadow-md border-primary/20">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Icon name="Route" size={24} />
