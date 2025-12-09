@@ -47,12 +47,12 @@ const UrgencyBanner = () => {
                     🔥 Акция заканчивается сегодня
                   </Badge>
                   <h3 className="text-xl font-bold mb-1">
-                    Консультация со скидкой 40%
+                    Консультация со скидкой 100% — бесплатно
                   </h3>
                   <p className="text-sm text-muted-foreground">
                     <span className="line-through">5 000 ₽</span>
-                    <span className="ml-2 text-xl font-bold text-red-600">3 000 ₽</span>
-                    <span className="ml-2">— экономия 2 000 ₽</span>
+                    <span className="ml-2 text-xl font-bold text-green-600">0 ₽</span>
+                    <span className="ml-2">— экономия 5 000 ₽</span>
                   </p>
                 </div>
               </div>
