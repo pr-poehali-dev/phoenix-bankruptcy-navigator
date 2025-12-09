@@ -82,11 +82,9 @@ const AcademySection = () => {
                       </Badge>
                     </div>
                     <CardTitle className="text-lg">{video.title}</CardTitle>
-                    <CardDescription>
-                      <div className="mt-2">
-                        <p className="font-semibold text-foreground">{video.speaker}</p>
-                        <p className="text-xs text-muted-foreground">{video.position}</p>
-                      </div>
+                    <CardDescription className="mt-2">
+                      <span className="font-semibold text-foreground block">{video.speaker}</span>
+                      <span className="text-xs text-muted-foreground block">{video.position}</span>
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
