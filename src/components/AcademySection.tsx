@@ -9,19 +9,22 @@ import ScrollReveal from "@/components/ScrollReveal";
 const AcademySection = () => {
   const videos = [
     {
-      title: "Введение в банкротство",
-      url: "https://storage.yandexcloud.net/poehalidev-user-files/%D0%A4%D0%95%D0%9D%D0%98%D0%9A%D0%A1/-968942259539461493.MP4",
-      description: "Основы процедуры банкротства для физических лиц"
+      title: "Три главных мифа о банкротстве",
+      speaker: "Валентина Голосова",
+      position: "Арбитражный управляющий член НПС СОПАУ \"Альянс управляющих\"",
+      url: "https://storage.yandexcloud.net/poehalidev-user-files/%D0%A4%D0%95%D0%9D%D0%98%D0%9A%D0%A1/-968942259539461493.MP4"
     },
     {
-      title: "Этапы процедуры банкротства",
-      url: "https://storage.yandexcloud.net/poehalidev-user-files/%D0%A4%D0%95%D0%9D%D0%98%D0%9A%D0%A1/6465904319764487084.MP4",
-      description: "Подробный разбор всех этапов банкротства"
+      title: "Кейс об оспаривании сделки",
+      speaker: "Валентина Голосова",
+      position: "Арбитражный управляющий член НПС СОПАУ \"Альянс управляющих\"",
+      url: "https://storage.yandexcloud.net/poehalidev-user-files/%D0%A4%D0%95%D0%9D%D0%98%D0%9A%D0%A1/6465904319764487084.MP4"
     },
     {
-      title: "Защита имущества",
-      url: "https://storage.yandexcloud.net/poehalidev-user-files/%D0%A4%D0%95%D0%9D%D0%98%D0%9A%D0%A1/7027899346417763482.MP4",
-      description: "Как сохранить имущество при банкротстве"
+      title: "Признаки банкротства предприятия",
+      speaker: "Валентина Голосова",
+      position: "Арбитражный управляющий член НПС СОПАУ \"Альянс управляющих\"",
+      url: "https://storage.yandexcloud.net/poehalidev-user-files/%D0%A4%D0%95%D0%9D%D0%98%D0%9A%D0%A1/7027899346417763482.MP4"
     }
   ];
 
@@ -79,7 +82,12 @@ const AcademySection = () => {
                       </Badge>
                     </div>
                     <CardTitle className="text-lg">{video.title}</CardTitle>
-                    <CardDescription>{video.description}</CardDescription>
+                    <CardDescription>
+                      <div className="mt-2">
+                        <p className="font-semibold text-foreground">{video.speaker}</p>
+                        <p className="text-xs text-muted-foreground">{video.position}</p>
+                      </div>
+                    </CardDescription>
                   </CardHeader>
                   <CardContent>
                     <video 
@@ -90,9 +98,13 @@ const AcademySection = () => {
                       <source src={video.url} type="video/mp4" />
                       Ваш браузер не поддерживает видео.
                     </video>
-                    <Button className="w-full hover:bg-gradient-to-r hover:from-primary hover:to-accent hover:text-white transition-all group border-primary/30" variant="outline">
-                      <Icon name="Play" size={16} className="mr-2" />
-                      <span>Смотреть видео</span>
+                    <Button 
+                      className="w-full hover:bg-gradient-to-r hover:from-primary hover:to-accent hover:text-white transition-all group border-primary/30" 
+                      variant="outline"
+                      onClick={() => window.location.href = 'mailto:contact@feniks.ru'}
+                    >
+                      <Icon name="Mail" size={16} className="mr-2" />
+                      <span>Связаться с автором</span>
                     </Button>
                   </CardContent>
                 </Card>
