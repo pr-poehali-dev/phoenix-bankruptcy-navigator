@@ -2,7 +2,6 @@ import { useState, useRef, useEffect } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import Icon from "@/components/ui/icon";
 import { Badge } from "@/components/ui/badge";
 
@@ -146,7 +145,11 @@ const AIAssistant = () => {
 
   useEffect(() => {
     if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+      setTimeout(() => {
+        if (scrollRef.current) {
+          scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+        }
+      }, 100);
     }
   }, [messages, isTyping]);
 
@@ -186,8 +189,8 @@ const AIAssistant = () => {
             </div>
           </CardHeader>
 
-          <CardContent className="flex-1 flex flex-col p-0">
-            <ScrollArea className="flex-1 p-4" ref={scrollRef}>
+          <CardContent className="flex-1 flex flex-col p-0 overflow-hidden">
+            <div className="flex-1 overflow-y-auto p-4" ref={scrollRef}>
               <div className="space-y-4">
                 {messages.map((message) => (
                   <div
@@ -224,7 +227,7 @@ const AIAssistant = () => {
                   </div>
                 )}
               </div>
-            </ScrollArea>
+            </div>
 
             {messages.length === 1 && (
               <div className="p-4 border-t bg-muted/30">
