@@ -48,7 +48,7 @@ const SpecialistDashboard = () => {
 
       <main className="container mx-auto px-4 py-8 max-w-6xl">
         <div className="mb-8">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col items-center gap-4 md:flex-row md:items-center md:justify-between text-center md:text-left">
             <div>
               <h2 className="text-3xl font-bold mb-2">Панель управления</h2>
               <p className="text-muted-foreground">Управляйте делами и взаимодействуйте с клиентами</p>

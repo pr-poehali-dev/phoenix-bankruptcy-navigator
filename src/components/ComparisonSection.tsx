@@ -81,10 +81,10 @@ const ComparisonSection = () => {
 
         <ScrollReveal delay={100}>
           <div className="grid md:grid-cols-3 gap-4 mb-6">
-            <div></div>
+            <div className="hidden md:block"></div>
             <Card className="shadow-md border-red-200 bg-red-50/50">
               <CardHeader className="pb-4">
-                <CardTitle className="flex items-center gap-2 text-red-700 justify-center">
+                <CardTitle className="flex items-center gap-2 text-red-700 justify-center text-center">
                   <div className="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center">
                     <Icon name="X" size={20} className="text-white" />
                   </div>
@@ -95,7 +95,7 @@ const ComparisonSection = () => {
 
             <Card className="shadow-md border-green-200 bg-green-50/50">
               <CardHeader className="pb-4">
-                <CardTitle className="flex items-center gap-2 text-green-700 justify-center">
+                <CardTitle className="flex items-center gap-2 text-green-700 justify-center text-center">
                   <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
                     <Icon name="Check" size={20} className="text-white" />
                   </div>

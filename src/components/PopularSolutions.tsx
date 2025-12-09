@@ -94,10 +94,10 @@ const PopularSolutions = () => {
           </div>
         </ScrollReveal>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-6 max-w-lg mx-auto md:max-w-none">
           {solutions.map((solution, index) => (
             <ScrollReveal key={solution.id} delay={index * 100}>
-              <Card className={`shadow-lg hover:shadow-2xl transition-all border-2 h-full flex flex-col ${index === 0 ? 'border-accent scale-105 md:scale-110' : 'border-primary/20'}`}>
+              <Card className={`shadow-lg hover:shadow-2xl transition-all border-2 h-full flex flex-col ${index === 0 ? 'border-accent md:scale-105' : 'border-primary/20'}`}>
                 {index === 0 && (
                   <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
                     <Badge className={`${solution.badgeColor} text-white px-4 py-1 shadow-md`}>

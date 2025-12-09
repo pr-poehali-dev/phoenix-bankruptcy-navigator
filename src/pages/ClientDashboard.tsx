@@ -109,7 +109,7 @@ const ClientDashboard = () => {
       </header>
 
       <main className="container mx-auto px-4 py-8 max-w-6xl">
-        <div className="mb-8">
+        <div className="mb-8 text-center md:text-left">
           <h2 className="text-3xl font-bold mb-2">Добро пожаловать, {user.name.split(" ")[0]}!</h2>
           <p className="text-muted-foreground">Управляйте своими делами и отслеживайте прогресс</p>
         </div>

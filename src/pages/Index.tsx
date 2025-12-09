@@ -108,19 +108,19 @@ const Index = () => {
             <Badge className="mb-4 bg-accent/15 text-accent border-accent/30 hover:bg-accent/25 shadow-sm shimmer-slow">
               ⭐ Новое начало уже близко
             </Badge>
-            <h2 className="text-6xl font-bold mb-6 hero-title">
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 hero-title text-center">
               Спишите долги законно за 5-7 месяцев
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto text-center">
               Более 500 клиентов уже списали ₽3.2 млрд долгов через Феникс. 
               Безопасная платформа с проверенными специалистами и защитой через Escrow
             </p>
-            <div className="flex gap-4 justify-center mt-8">
-              <Button size="lg" className="gap-2 hover:scale-105 transition-transform shadow-lg" onClick={() => document.getElementById('diagnostic')?.scrollIntoView({ behavior: 'smooth' })}>
+            <div className="flex flex-wrap gap-4 justify-center mt-8">
+              <Button size="lg" className="gap-2 hover:scale-105 transition-transform shadow-lg w-full md:w-auto" onClick={() => document.getElementById('diagnostic')?.scrollIntoView({ behavior: 'smooth' })}>
                 <Icon name="Calculator" size={20} />
-                Узнать за 3 минуты, подходит ли мне банкротство
+                <span className="text-sm md:text-base">Узнать за 3 минуты, подходит ли мне банкротство</span>
               </Button>
-              <Button size="lg" variant="outline" className="gap-2 hover:scale-105 transition-transform group border-accent/30 hover:border-accent hover:bg-accent/10">
+              <Button size="lg" variant="outline" className="gap-2 hover:scale-105 transition-transform group border-accent/30 hover:border-accent hover:bg-accent/10 w-full md:w-auto">
                 <Icon name="Phone" size={20} className="text-accent group-hover:scale-110 transition-transform" />
                 Консультация за 3000₽
               </Button>

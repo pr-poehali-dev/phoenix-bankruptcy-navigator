@@ -103,8 +103,8 @@ const Cart = () => {
       </header>
 
       <main className="container mx-auto px-4 py-8 max-w-4xl">
-        <div className="mb-8">
-          <h2 className="text-3xl font-bold mb-2 flex items-center gap-3">
+        <div className="mb-8 text-center md:text-left">
+          <h2 className="text-3xl font-bold mb-2 flex items-center gap-3 justify-center md:justify-start">
             <Icon name="ShoppingCart" size={32} className="text-primary" />
             Корзина услуг
           </h2>
