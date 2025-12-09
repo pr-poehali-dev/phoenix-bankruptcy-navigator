@@ -7,6 +7,24 @@ import Icon from "@/components/ui/icon";
 import ScrollReveal from "@/components/ScrollReveal";
 
 const AcademySection = () => {
+  const videos = [
+    {
+      title: "Введение в банкротство",
+      url: "https://storage.yandexcloud.net/poehalidev-user-files/%D0%A4%D0%95%D0%9D%D0%98%D0%9A%D0%A1/-968942259539461493.MP4",
+      description: "Основы процедуры банкротства для физических лиц"
+    },
+    {
+      title: "Этапы процедуры банкротства",
+      url: "https://storage.yandexcloud.net/poehalidev-user-files/%D0%A4%D0%95%D0%9D%D0%98%D0%9A%D0%A1/6465904319764487084.MP4",
+      description: "Подробный разбор всех этапов банкротства"
+    },
+    {
+      title: "Защита имущества",
+      url: "https://storage.yandexcloud.net/poehalidev-user-files/%D0%A4%D0%95%D0%9D%D0%98%D0%9A%D0%A1/7027899346417763482.MP4",
+      description: "Как сохранить имущество при банкротстве"
+    }
+  ];
+
   const courses = [
     {
       title: "Основы банкротства физических лиц",
@@ -41,12 +59,46 @@ const AcademySection = () => {
         </ScrollReveal>
 
         <ScrollReveal delay={200}>
-          <Tabs defaultValue="courses" className="w-full">
-          <TabsList className="grid w-full max-w-md mx-auto grid-cols-3">
+          <Tabs defaultValue="videos" className="w-full">
+          <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-4">
+            <TabsTrigger value="videos">Видео</TabsTrigger>
             <TabsTrigger value="courses">Курсы</TabsTrigger>
             <TabsTrigger value="cases">Кейсы</TabsTrigger>
             <TabsTrigger value="faq">FAQ</TabsTrigger>
           </TabsList>
+
+          <TabsContent value="videos" className="mt-8">
+            <div className="grid md:grid-cols-3 gap-6">
+              {videos.map((video, index) => (
+                <Card key={index} className="hover-scale shadow-sm hover:shadow-md transition-shadow border-primary/20">
+                  <CardHeader>
+                    <div className="flex items-center gap-2 mb-2">
+                      <Badge className="bg-accent/15 text-accent border-accent/30 shadow-sm shimmer-slow">
+                        <Icon name="Video" size={14} className="mr-1" />
+                        Видео
+                      </Badge>
+                    </div>
+                    <CardTitle className="text-lg">{video.title}</CardTitle>
+                    <CardDescription>{video.description}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <video 
+                      controls 
+                      className="w-full rounded-lg mb-4"
+                      poster="/placeholder.svg"
+                    >
+                      <source src={video.url} type="video/mp4" />
+                      Ваш браузер не поддерживает видео.
+                    </video>
+                    <Button className="w-full hover:bg-gradient-to-r hover:from-primary hover:to-accent hover:text-white transition-all group border-primary/30" variant="outline">
+                      <Icon name="Play" size={16} className="mr-2" />
+                      <span>Смотреть видео</span>
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </TabsContent>
 
           <TabsContent value="courses" className="mt-8">
             <div className="grid md:grid-cols-3 gap-6">
